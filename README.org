@@ -5,10 +5,17 @@
 -> Bookmarks -> Backup/Restore
 
 * Alfred
+[[http://alfredtips.com/home/][Alfred tips]]
+
 ** Custom Search
 
-*** Google
-Icon
-#+BEGIN_SRC
+*** Yahoo Finance
+#+BEGIN_src
+http://finance.yahoo.com/q?s={query}
+#+END_src
 
-#+END_SRC
+*** Github
+#+BEGIN_src
+https://github.com/search?q={query}
+#+END_src
+
