@@ -1,3 +1,14 @@
 #+TITLE: Dotfile
 
-*
+* Firefox
+** Bookmarks
+-> Bookmarks -> Backup/Restore
+
+* Alfred
+** Custom Search
+
+*** Google
+Icon
+#+BEGIN_SRC
+
+#+END_SRC
