@@ -1,4 +1,4 @@
-#+TITLE: Dotfile
+#+TITLE: Dotfiles
 
 * Firefox
 ** Bookmarks
