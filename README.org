@@ -4,6 +4,12 @@
 ** Bookmarks
 -> Bookmarks -> Backup/Restore
 
+** Newtab
+-> about:config -> browser.startup.Homepage -> about:newtab
+
+** Youtube fullscreen notification
+-> 
+
 * Alfred
 [[http://alfredtips.com/home/][Alfred tips]]
 
