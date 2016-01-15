@@ -8,7 +8,7 @@
 -> about:config -> browser.startup.Homepage -> about:newtab
 
 ** Youtube fullscreen notification
--> 
+-> about:config -> full-screen.api.warning.timeout -> 0
 
 * Alfred
 [[http://alfredtips.com/home/][Alfred tips]]
