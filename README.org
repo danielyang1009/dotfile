@@ -5,19 +5,18 @@
 
 * Firefox
 ** Bookmarks
--> Bookmarks -> Backup/Restore
+- Bookmarks -> Backup/Restore
 
 ** Set homepage to newtab
--> about:config -> browser.startup.Homepage -> about:newtab
+- about:config -> browser.startup.Homepage -> about:newtab
 
 ** Disable youtube fullscreen notification
--> about:config -> full-screen.api.warning.timeout -> 0
+- about:config -> full-screen.api.warning.timeout -> 0
 
 * Alfred
-[[http://alfredtips.com/home/][Alfred tips]]
+- [[http://alfredtips.com/home/][Alfred tips]]
 
 ** Custom Search
-
 *** Yahoo Finance
 #+BEGIN_src
 http://finance.yahoo.com/q?s={query}
