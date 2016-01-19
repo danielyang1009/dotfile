@@ -1,5 +1,8 @@
 #+TITLE: Dotfiles
 
+* HHKB dip setting
+- Switch 2,3 ON
+
 * Firefox
 ** Bookmarks
 -> Bookmarks -> Backup/Restore
