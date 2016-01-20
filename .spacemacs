@@ -24,8 +24,8 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      auto-completion
+     better-defaults
      emacs-lisp
-     erc
      git
      github
      markdown
@@ -33,9 +33,12 @@ values."
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
-     ;;spell-checking
-     syntax-checking
+     ;; spell-checking
+     ;; syntax-checking
      version-control
+     ;;eyebrowse
+     ;;(colors :variables
+     ;;       colors-enable-nyan-cat-progress-bar t)
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -102,7 +105,8 @@ values."
                          ;;solarized-dark
                          ;;leuven
                          monokai
-                         zenburn)
+                         ;;zenburn
+                         )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
@@ -111,7 +115,7 @@ values."
                                :size 13
                                :weight normal
                                :width normal
-                               :powerline-scale 1.15)
+                               :powerline-scale 1.1)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The leader key accessible in `emacs state' and `insert state'
@@ -182,14 +186,14 @@ values."
    dotspacemacs-loading-progress-bar t
    ;; If non nil the frame is fullscreen when Emacs starts up. (default nil)
    ;; (Emacs 24.4+ only)
-   dotspacemacs-fullscreen-at-startup nil
+   dotspacemacs-fullscreen-at-startup t
    ;; If non nil `spacemacs/toggle-fullscreen' will not use native fullscreen.
    ;; Use to disable fullscreen animations in OSX. (default nil)
    dotspacemacs-fullscreen-use-non-native nil
    ;; If non nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (default nil) (Emacs 24.4+ only)
-   dotspacemacs-maximized-at-startup t
+   dotspacemacs-maximized-at-startup nil
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
@@ -199,7 +203,7 @@ values."
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
    dotspacemacs-inactive-transparency 90
    ;; If non nil unicode symbols are displayed in the mode line. (default t)
-   dotspacemacs-mode-line-unicode-symbols nil
+   dotspacemacs-mode-line-unicode-symbols t
    ;; If non nil smooth scrolling (native-scrolling) is enabled. Smooth
    ;; scrolling overrides the default behavior of Emacs which recenters the
    ;; point when it reaches the top or bottom of the screen. (default t)
@@ -239,28 +243,36 @@ values."
 It is called immediately after `dotspacemacs/init'.  You are free to put almost
 any user code here.  The exception is org related code, which should be placed
 in `dotspacemacs/user-config'."
-  (setq-default
-
-   ;; Evil
-   evil-shift-round nil
-
-   ;; Org
-   org-tags-column -80
-   org-agenda-window-setup 'other-window
-   org-directory "~/org-notes"
-   org-default-notes-file "~/org-notes/capture.org"
-   org-agenda-files '("~/org-notes/" "~/org-notes/misc/")
-   ))
+  (setq evil-shift-round nil)
+  )
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
-  ;; Miscellaneous
-  ;; wrap long-text
-  (add-hook 'text-mode-hook 'auto-fill-mode)
-  (add-hook 'makefile-mode-hook 'whitespace-mode)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-capture-templates
+   (quote
+    (("t" "Tasks" entry
+      (file+headline "~/org-notes/gtd.org" "Workspace")
+      "* TODO %?" n nnnnnnnnnn)
+     ("n" "Notes" entry
+      (file+headline "~/org-notes/notes.org" "QuickNotes")
+      "* %? %a")))))
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
+ 
