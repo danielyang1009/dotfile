@@ -32,4 +32,11 @@ https://github.com/search?q={query}
 #+BEGIN_SRC 
 ~/.emacs.d/lisp/init-local.el
 #+END_SRC
+
+* Run eamcs from USB
+#+BEGIN_SRC 
+set HOME=%~dp0
+emacs\bin\runemacs.exe
+#+END_SRC
+
 ** Templates
