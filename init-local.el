@@ -5,17 +5,17 @@
 
 (setq org-capture-templates
       '(
-        ("t" "Todo [#A]" entry (file+headline "~/org-notes/gtd.org" "Important & Urgent")
-         "* TODO %?\n  %i\n")
+        ("t" "Todos [#A]" entry (file+headline "~/org-notes/gtd.org" "Important & Urgent")
+         "* TODO [#A] %?\n %i\n")
         ("d" "Daily [#B]" entry (file+headline "~/org-notes/gtd.org" "Daily tasks")
          "* TODO [#B] %?\n %i\n %t")
-        ("n" "Notes [#C]" entry (file+headline "~/org-notes/gtd.org" "Quick notes")
-         "* TODO [#C] %?\n  %i\n %U")
+        ("n" "Notes [#C]" entry (file+headline "~/org-notes/gtd.org" "Notes")
+         "* TODO [#C] %?\n %i\n %U")
         ))
 (setq org-agenda-custom-commands
       '(
         ("wa" "Important & Urgent (DO)" tags-todo "+PRIORITY=\"A\"")
-        ("wb" "Important & !Urgent (Plan)" tags-todo "-Weekly-Monthly-Daily+PRIORITY=\"B\"")
+        ("wb" "Important & !Urgent (Plan)" tags-todo "-weekly-monthly-daily+PRIORITY=\"B\"")
         ("wc" "!Important & Urgent (Delegate)" tags-todo "+PRIORITY=\"C\"")
         ))
 
