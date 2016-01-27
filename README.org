@@ -1,4 +1,5 @@
 #+TITLE: Dotfiles
+#+STARPUP: showall
 
 * HHKB dip setting
 - Switch 2,3 ON
@@ -27,3 +28,8 @@ http://finance.yahoo.com/q?s={query}
 https://github.com/search?q={query}
 #+END_src
 
+* Customize emacs (purcell)
+#+BEGIN_SRC 
+~/.emacs.d/lisp/init-local.el
+#+END_SRC
+** Templates
