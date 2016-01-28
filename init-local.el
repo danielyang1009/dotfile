@@ -1,7 +1,26 @@
-;;; package -- summary -- purcell .emacs
+;;; package -- summary
 ;;; My customize-setup
+
+;;(require 'monokai)
+;;(load-theme 'monokai)
+
+
+;; main window
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(menu-bar-mode -1)
+
+(nyan-mode t)
+(nyan-start-animation)
+
 (setq org-agenda-files (quote ("~/org-notes" )))
 (setq org-default-notes-file "~/org-notes/gtd.org")
+
+(setq org-todo-keywords
+ (quote
+  ((sequence "TODO(t)" "STARTED(s)" "|" "DONE(d!/!)")
+   (sequence "PROJECT(p)" "|" "DONE(d!/!)" "CANCELLED(c@/!)")
+   (sequence "WAITING(w@/!)" "HOLD(h)" "|" "CANCELLED(c@/!)"))))
 
 (setq org-capture-templates
       '(
@@ -9,7 +28,7 @@
          "* TODO [#A] %?\n %i\n")
         ("d" "Daily [#B]" entry (file+headline "~/org-notes/gtd.org" "Daily tasks")
          "* TODO [#B] %?\n %i\n %t")
-        ("n" "Notes [#C]" entry (file+headline "~/org-notes/gtd.org" "Notes")
+        ("p" "Plan [#B]" entry (file+headline "~/org-notes/gtd.org" "Important & !Urgent")
          "* TODO [#C] %?\n %i\n %U")
         ))
 (setq org-agenda-custom-commands

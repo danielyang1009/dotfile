@@ -57,7 +57,7 @@
 (nyan-start-animation)
 
 (require 'magit)
-(global-set-key "\C-cg" 'magit-status)
+(global-set-key "\C-xg" 'magit-status)
 
 (require 'company)
 
@@ -97,3 +97,19 @@
 ;; mouse scrolling
 (setq mouse-wheel-follow-mouse 't)
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (which-key company magit nyan-mode monokai-theme helm smex))))
+
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
