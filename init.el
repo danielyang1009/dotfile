@@ -1,0 +1,99 @@
+;; init.el --- Emacs Initialization File
+;;
+;; Author: Daniel Yang
+
+(setq gc-cons-threshold 100000000)
+
+;; =========================
+;; Download Packges
+;; ========================= 
+(require 'package)
+(setq package-list '(org smex helm monokai-theme nyan-mode magit company which-key))
+
+; list the repositories containing them
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+
+(when (< emacs-major-version 24)
+  ;; For important compatibility libraries like cl-lib
+  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+
+;; activate all the packages (in particular autoloads)
+(package-initialize)
+
+;; fetch the list of packages available 
+(unless package-archive-contents
+  (package-refresh-contents))
+
+;; install the missing packages
+(dolist (package package-list)
+  (unless (package-installed-p package)
+    (package-install package)))
+
+;; =========================
+;; Personal Pacakges
+;; ========================= 
+(require 'monokai-theme)
+
+(require 'ido)
+(ido-mode t)
+
+(require 'helm)
+(require 'helm-config)
+(helm-mode t)
+
+(require 'smex)
+(global-set-key (kbd "M-x") 'smex)
+
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
+
+(require 'org)
+;;(require 'org-checklist)
+
+(require 'nyan-mode)
+(nyan-mode t)
+(nyan-start-animation)
+
+(require 'magit)
+(global-set-key "\C-cg" 'magit-status)
+
+(require 'company)
+
+(require 'which-key)
+(which-key-mode t)
+(which-key-setup-side-window-bottom)
+;;(setq which-key-use-C-h-for-paging nil)
+
+
+;; =========================
+;; Configuration
+;; ========================= 
+
+;; main window
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(menu-bar-mode -1)
+
+;; time
+(setq display-time-24hr-format t)
+
+;; start up
+(setq inhibit-startup-screen +1)
+(setq initial-major-mode 'org-mode)
+(setq initial-scratch-message nil)
+
+;;(toggle-frame-maximized)
+(display-time-mode +1)
+
+;; scrolling
+(setq redisplay-dont-pause t
+      scroll-margin 1
+      scroll-step 1
+      scroll-conservatively 10000
+      scroll-preserve-screen-position 1)
+
+;; mouse scrolling
+(setq mouse-wheel-follow-mouse 't)
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))

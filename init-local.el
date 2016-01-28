@@ -1,4 +1,4 @@
-;;; package -- summary
+;;; package -- summary -- purcell .emacs
 ;;; My customize-setup
 (setq org-agenda-files (quote ("~/org-notes" )))
 (setq org-default-notes-file "~/org-notes/gtd.org")
