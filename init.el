@@ -1,4 +1,4 @@
-;; init.el --- Emacs Initialization File
+﻿;; init.el --- Emacs Initialization File
 ;;
 ;; Author: Daniel Yang
 
@@ -8,7 +8,7 @@
 ;; Download Packges
 ;; ========================= 
 (require 'package)
-(setq package-list '(org helm ido monokai-theme nyan-mode magit company which-key))
+(setq package-list '(org helm ido monokai-theme nyan-mode magit company which-key org=bullets))
 
 ; list the repositories containing them
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
@@ -36,6 +36,10 @@
 ;; ========================= 
 (require 'monokai-theme)
 (load-theme 'monokai t)
+
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+(setq org-bullets-bullet-list '("◉" "►" "●" "○" "•"))
 
 (require 'ido)
 (ido-mode t)
