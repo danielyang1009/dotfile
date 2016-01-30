@@ -1,32 +1,27 @@
 ﻿;;; package -- summary
 ;;; My customize-setup
 
-;;(require 'monokai)
-;;(load-theme 'monokai)
+(require 'monokai-theme)
+(load-theme 'monokai t)
 
 ;; main window
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
 
-;; nyan-mode
+;; nyan-moden
 (nyan-mode t)
 (nyan-start-animation)
 (setq nyan-wavy-trail t)
 
-;; recentf
-(require 'recentf)
-(setq recentf-max-saved-items 50
-      recentf-max-menu-items 10)
-(recentf-mode t)
-
-(defun recentf-ido-find-file ()
-  "Find a recent file using ido."
-  (interactive)
-  (let ((file (ido-completing-read "Choose recent file: " recentf-list nil t)))
-    (when file
-      (find-file file))))
-(global-set-key (kbd "C-c f") 'recentf-ido-find-file)
+;; helm
+(require 'helm)
+(helm-mode t)
+(helm-autoresize-mode t)
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "C-x C-b") 'helm-buffers-list)
+(global-set-key (kbd "C-x f") 'helm-recentf)
 
 ;; org-mode
 (setq org-startup-indented t)
