@@ -26,12 +26,12 @@
   (let ((file (ido-completing-read "Choose recent file: " recentf-list nil t)))
     (when file
       (find-file file))))
-
 (global-set-key (kbd "C-c f") 'recentf-ido-find-file)
 
 ;; org-mode
 (setq org-startup-indented t)
 (setq org-indent-mode t)
+(setq org-export-coding-system 'utf-8)
 
 (require 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
