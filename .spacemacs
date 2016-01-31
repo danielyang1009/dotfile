@@ -1,4 +1,4 @@
-;; -*- mode: emacs-lisp -*-
+﻿;; -*- mode: emacs-lisp -*-
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
@@ -89,7 +89,7 @@ values."
    dotspacemacs-startup-lists '(recents projects)
    ;; Number of recent files to show in the startup buffer. Ignored if
    ;; `dotspacemacs-startup-lists' doesn't include `recents'. (default 5)
-   dotspacemacs-startup-recent-list-size 5
+   dotspacemacs-startup-recent-list-size 8
    ;; Default major mode of the scratch buffer (default `text-mode')
    dotspacemacs-scratch-mode 'text-mode
    ;; List of themes, the first of the list is loaded when spacemacs starts.
@@ -228,7 +228,7 @@ values."
    dotspacemacs-whitespace-cleanup 'trailing
    ))
 
-(defun dotspacemacs/user-init () 
+(defun dotspacemacs/user-init ()
   "Initialization function for user code.
 It is called immediately after `dotspacemacs/init'.  You are free to put almost
 any user code here.  The exception is org related code, which should be placed
@@ -239,9 +239,50 @@ in `dotspacemacs/user-config'."
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
+
+  ;; nyan-mode
   (nyan-mode t)
   (nyan-start-animation)
   (setq nyan-wavy-trail t)
+
+  ;; org-mode
+  (setq org-startup-indented t)
+  (setq org-indent-mode t)
+  (setq org-export-coding-system 'utf-8)
+
+  (setq org-bullets-bullet-list '("◉" "►" "●" "○" "•"))
+
+  (setq org-agenda-files (quote ("~/org-notes" )))
+  (setq org-default-notes-file "~/org-notes/gtd.org")
+
+  (setq org-todo-keywords
+   (quote
+    ((sequence "TODO(t)" "STARTED(s)" "|" "DONE(d!/!)")
+     (sequence "PROJECT(p)" "|" "DONE(d!/!)" "CANCELLED(c@/!)")
+     (sequence "WAITING(w@/!)" "HOLD(h)" "|" "CANCELLED(c@/!)"))))
+
+  (setq org-capture-templates
+      '(
+        ("t" "Todos [#A]" entry (file+headline "~/org-notes/gtd.org" "Important & Urgent")
+         "* TODO [#A] %?\n %i\n"
+         :empty-lines 1)
+        ("d" "Daily [#B]" entry (file+headline "~/org-notes/gtd.org" "Daily tasks")
+         "* TODO [#B] %?\n %i\n %t"
+         :empty-lines 1)
+        ("p" "Plan [#B]" entry (file+headline "~/org-notes/gtd.org" "Important & !Urgent")
+         "* TODO [#B] %?\n %i\n %U"
+         :empty-lines 1)
+        ("l" "Long-term [#C]" entry (file+headline "~/org-notes/gtd.org" "Long-term")
+         "* TODO [#C] %?\n %i\n"
+         :empty-lines 1)
+        ))
+
+  (setq org-agenda-custom-commands
+      '(
+        ("wa" "Important & Urgent (DO)" tags-todo "+PRIORITY=\"A\"")
+        ("wb" "Important & !Urgent (Plan)" tags-todo "-weekly-monthly-daily+PRIORITY=\"B\"")
+        ("wc" "!Important & Urgent (Delegate)" tags-todo "+PRIORITY=\"C\"")
+        ))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
