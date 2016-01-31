@@ -8,7 +8,7 @@
 ;; Download Packges
 ;; ========================= 
 (require 'package)
-(setq package-list '(org helm ido monokai-theme nyan-mode magit company which-key org=bullets))
+(setq package-list '(org helm ido monokai-theme nyan-mode magit company which-key org-bullets))
 
 ; list the repositories containing them
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
@@ -45,6 +45,7 @@
 (ido-mode t)
 
 (require 'helm)
+(require 'helm-config)
 (helm-mode t)
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
