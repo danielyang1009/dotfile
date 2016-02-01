@@ -4,119 +4,100 @@
 
 (setq gc-cons-threshold 100000000)
 
-;; =========================
-;; Download Packges
-;; ========================= 
+;; Keep track of loading time
+(defconst emacs-start-time (current-time))
+;; initalize all ELPA packages
 (require 'package)
-(setq package-list '(org helm ido monokai-theme nyan-mode magit company which-key org-bullets))
 
-; list the repositories containing them
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+;;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 
-(when (< emacs-major-version 24)
-  ;; For important compatibility libraries like cl-lib
-  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
-
-;; activate all the packages (in particular autoloads)
 (package-initialize)
 
-;; fetch the list of packages available 
-(unless package-archive-contents
-  (package-refresh-contents))
+(setq package-enable-at-startup nil)
+(let ((elapsed (float-time (time-subtract (current-time)
+                                            emacs-start-time))))
+(message "Loaded packages in %.3fs" elapsed))
 
-;; install the missing packages
-(dolist (package package-list)
-  (unless (package-installed-p package)
-    (package-install package)))
-
-;; =========================
-;; Personal Pacakges
-;; ========================= 
 (require 'monokai-theme)
-(load-theme 'monokai t)
 
-(require 'org-bullets)
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-(setq org-bullets-bullet-list '("◉" "►" "●" "○" "•"))
+(require 'which-key)
+(which-key-mode t)
+(which-key-setup-side-window-bottom)
 
-(require 'ido)
-(ido-mode t)
+(require 'magit)
+(global-set-key "\C-xg" 'magit-status)
 
 (require 'helm)
 (require 'helm-config)
 (helm-mode t)
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "C-x f") 'helm-find-files)
 
-;;(require 'smex)
 
-;;(require 'uniquify)
-;;(setq uniquify-buffer-name-style 'forward)
-
+;; org-mode
 (require 'org)
-;;(require 'org-checklist)
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+(setq org-bullets-bullet-list '("◉" "►" "●" "○" "•"))
+(helm-autoresize-mode t)
 
-(require 'nyan-mode)
-(nyan-mode t)
-(nyan-start-animation)
-(setq nyan-wavy-trail t)
+(setq org-agenda-files (quote ("~/org-notes" )))
+(setq org-default-notes-file "~/org-notes/gtd.org")
 
-(require 'magit)
-(global-set-key "\C-xg" 'magit-status)
-
-(require 'company)
-
-(require 'which-key)
-(which-key-mode t)
-(which-key-setup-side-window-bottom)
-;;(setq which-key-use-C-h-for-paging nil)
+(global-set-key (kbd "C-c c") 'org-capture)
+(global-set-key (kbd "C-c l") 'org-store-link)
+(global-set-key (kbd "C-c a") 'org-agenda)
 
 
-;; =========================
-;; Configuration
-;; ========================= 
+  (setq org-startup-indented t)
+  (setq org-indent-mode t)
+  (setq org-export-coding-system 'utf-8)
+  (setq org-todo-keywords
+   (quote
+    ((sequence "TODO(t)" "STARTED(s)" "|" "DONE(d!/!)")
+     (sequence "PROJECT(p)" "|" "DONE(d!/!)" "CANCELLED(c@/!)")
+     (sequence "WAITING(w@/!)" "HOLD(h)" "|" "CANCELLED(c@/!)"))))
+
+  (setq org-capture-templates
+      '(
+        ("t" "Todos [#A]" entry (file+headline "~/org-notes/gtd.org" "Important & Urgent")
+         "* TODO [#A] %?\n %i\n"
+         :empty-lines 1)
+        ("d" "Daily [#B]" entry (file+headline "~/org-notes/gtd.org" "Daily tasks")
+         "* TODO [#B] %?\n %i\n %t"
+         :empty-lines 1)
+        ("p" "Plan [#B]" entry (file+headline "~/org-notes/gtd.org" "Important & !Urgent")
+         "* TODO [#B] %?\n %i\n %U"
+         :empty-lines 1)
+        ("l" "Long-term [#C]" entry (file+headline "~/org-notes/gtd.org" "Long-term")
+         "* TODO [#C] %?\n %i\n"
+         :empty-lines 1)
+        ))
+
+  (setq org-agenda-custom-commands
+      '(
+        ("wa" "Important & Urgent (DO)" tags-todo "+PRIORITY=\"A\"")
+        ("wb" "Important & !Urgent (Plan)" tags-todo "-weekly-monthly-daily+PRIORITY=\"B\"")
+        ("wc" "!Important & Urgent (Delegate)" tags-todo "+PRIORITY=\"C\"")
+        ))
+
+;; start up
+(setq inhibit-startup-screen t)
+(setq initial-major-mode 'org-mode)
+(setq initial-scratch-message nil)
+
 
 ;; main window
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
-
-;; time
-(setq display-time-24hr-format t)
-
-;; start up
-(setq inhibit-startup-screen +1)
-(setq initial-major-mode 'org-mode)
-(setq initial-scratch-message nil)
-
-;;(toggle-frame-maximized)
-(display-time-mode +1)
-
-;; scrolling
-(setq redisplay-dont-pause t
-      scroll-margin 1
-      scroll-step 1
-      scroll-conservatively 10000
-      scroll-preserve-screen-position 1)
-
-;; mouse scrolling
-(setq mouse-wheel-follow-mouse 't)
-(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (which-key company magit nyan-mode monokai-theme helm smex))))
+(display-time-mode 1)
 
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+;; Message how long it took to load everything (minus packages)
+(let ((elapsed (float-time (time-subtract (current-time)
+                                            emacs-start-time))))
+(message "Loading settings...done (%.3fs)" elapsed))

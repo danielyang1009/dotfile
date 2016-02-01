@@ -1,13 +1,14 @@
 ﻿;;; package -- summary
 ;;; My customize-setup
 
-(require 'monokai-theme)
+;;(require 'monokai-theme)
 (load-theme 'monokai t)
 
 ;; main window
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
+;;(setq initial-major-mode 'org-mode)
 
 ;; nyan-moden
 (nyan-mode t)
@@ -38,8 +39,7 @@
 (setq org-todo-keywords
  (quote
   ((sequence "TODO(t)" "STARTED(s)" "|" "DONE(d!/!)")
-   (sequence "PROJECT(p)" "|" "DONE(d!/!)" "CANCELLED(c@/!)")
-   (sequence "WAITING(w@/!)" "HOLD(h)" "|" "CANCELLED(c@/!)"))))
+   (sequence "PROJECT(p)" "|" "DONE(d!/!)" "CANCELLED(c@/!)"))))
 
 (setq org-capture-templates
       '(

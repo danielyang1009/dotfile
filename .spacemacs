@@ -201,7 +201,7 @@ values."
    ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
    ;; derivatives. If set to `relative', also turns on relative line numbers.
    ;; (default nil)
-   dotspacemacs-line-numbers 'relative
+   dotspacemacs-line-numbers nil
    ;; If non-nil smartparens-strict-mode will be enabled in programming modes.
    ;; (default nil)
    dotspacemacs-smartparens-strict-mode nil
@@ -252,21 +252,20 @@ layers configuration. You are free to put any user code."
 
   (setq org-bullets-bullet-list '("◉" "►" "●" "○" "•"))
 
-  (setq org-agenda-files (quote ("~/org-notes" )))
+  (setq org-agenda-files (quote ("~/org-notes/gtd.org" "~/org-notes/daily.org"  )))
   (setq org-default-notes-file "~/org-notes/gtd.org")
 
   (setq org-todo-keywords
    (quote
     ((sequence "TODO(t)" "STARTED(s)" "|" "DONE(d!/!)")
-     (sequence "PROJECT(p)" "|" "DONE(d!/!)" "CANCELLED(c@/!)")
-     (sequence "WAITING(w@/!)" "HOLD(h)" "|" "CANCELLED(c@/!)"))))
+    )))
 
   (setq org-capture-templates
       '(
         ("t" "Todos [#A]" entry (file+headline "~/org-notes/gtd.org" "Important & Urgent")
          "* TODO [#A] %?\n %i\n"
          :empty-lines 1)
-        ("d" "Daily [#B]" entry (file+headline "~/org-notes/gtd.org" "Daily tasks")
+        ("d" "Daily [#B]" entry (file+headline "~/org-notes/daily.org" "Daily tasks")
          "* TODO [#B] %?\n %i\n %t"
          :empty-lines 1)
         ("p" "Plan [#B]" entry (file+headline "~/org-notes/gtd.org" "Important & !Urgent")
@@ -287,3 +286,18 @@ layers configuration. You are free to put any user code."
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (ws-butler window-numbering volatile-highlights vi-tilde-fringe toc-org spacemacs-theme spaceline smooth-scrolling smeargle restart-emacs rainbow-delimiters popwin persp-mode pcre2el paradox page-break-lines orgit org-repo-todo org-present org-pomodoro org-plus-contrib org-bullets open-junk-file nyan-mode neotree move-text mmm-mode markdown-toc markdown-mode magit-gitflow macrostep lorem-ipsum linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flyspell helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-gutter-fringe+ git-gutter-fringe git-gutter+ git-gutter gh-md flycheck-pos-tip flycheck flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-jumper evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu elisp-slime-nav diff-hl define-word company-statistics company-quickhelp company clean-aindent-mode buffer-move bracketed-paste auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell quelpa package-build use-package which-key bind-key bind-map evil monokai-theme))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
