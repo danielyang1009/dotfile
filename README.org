@@ -2,7 +2,8 @@
 #+STARPUP: showall
 
 * HHKB dip setting
-- Switch 2,3 ON
+** Windows
+- Switch 2,3,5 ON
 
 * Firefox
 ** Bookmarks
@@ -29,12 +30,12 @@ https://github.com/search?q={query}
 #+END_src
 
 * Customize emacs (purcell)
-#+BEGIN_SRC 
+#+BEGIN_SRC
 ~/.emacs.d/lisp/init-local.el
 #+END_SRC
 
 * Run eamcs from USB
-#+BEGIN_SRC 
+#+BEGIN_SRC
 set HOME=%~dp0
 emacs\bin\runemacs.exe
 #+END_SRC
