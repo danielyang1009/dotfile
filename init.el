@@ -22,6 +22,11 @@
 
 (require 'monokai-theme)
 
+;; nyan-mode
+(nyan-mode t)
+(nyan-start-animation)
+(setq nyan-wavy-trail t)
+
 (require 'which-key)
 (which-key-mode t)
 (which-key-setup-side-window-bottom)
