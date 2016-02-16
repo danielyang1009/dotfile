@@ -2,7 +2,7 @@
 #+STARPUP: showall
 
 * Windows
-**System variables
+** System variables
 - HOME "C:\Home"
 
 * HHKB dip setting
