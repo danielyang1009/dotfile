@@ -1,9 +1,9 @@
 #+TITLE: Dotfiles
 #+STARPUP: showall
 
-*Windows
-System variables
-HOME "C:\Home"
+* Windows
+**System variables
+- HOME "C:\Home"
 
 * HHKB dip setting
 ** Windows
