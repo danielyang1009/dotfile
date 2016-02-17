@@ -1,6 +1,14 @@
 #+TITLE: Dotfiles
 #+STARPUP: showall
 
+* Github
+** Setup Git
+Add to System Variables to PATH
+#+BEGIN_EXAMPLE
+C:\Users\<user>\AppData\Local\GitHub\PortableGit_<guid>\bin
+C:\Users\<user>\AppData\Local\GitHub\PortableGit_<guid>\cmd
+#+END_EXAMPLE
+
 * Windows
 ** System variables
 - HOME "C:\Home"
