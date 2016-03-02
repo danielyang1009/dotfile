@@ -24,21 +24,20 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      auto-completion
-     better-defaults
+     ;;better-defaults
      emacs-lisp
-     git
-     github
-     markdown
+     ;;git
+     ;;github
+     ;;markdown
      org
-     shell
-     latex
-     ;;(latex :variables latex-build-command "LaTeX")
+     ;;shell
+     ;;latex
      ;;(shell :variables
      ;;     shell-default-height 30)
-     ;;    shell-default-position 'bottom)
-     ;;spell-checking
-     ;;syntax-checking
-     version-control
+     ;;     shell-default-position 'bottom)
+     spell-checking
+     syntax-checking
+     ;;version-control
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -93,14 +92,14 @@ values."
    dotspacemacs-startup-lists '(recents projects)
    ;; Number of recent files to show in the startup buffer. Ignored if
    ;; `dotspacemacs-startup-lists' doesn't include `recents'. (default 5)
-   dotspacemacs-startup-recent-list-size 8
+   dotspacemacs-startup-recent-list-size 16
    ;; Default major mode of the scratch buffer (default `text-mode')
    dotspacemacs-scratch-mode 'text-mode
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(
-			 monokai
+   dotspacemacs-themes '(leuven
+                         monokai
                          spacemacs-dark)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
@@ -244,10 +243,11 @@ in `dotspacemacs/user-config'."
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
-  ;; window
-  ;;(split-window-right)
 
   (global-set-key [f12] 'org-html-export-to-html)
+
+  ;;set powerline
+  (setq powerline-default-separator 'slant)
 
   ;; nyan-mode
   (nyan-mode t)
@@ -259,8 +259,8 @@ layers configuration. You are free to put any user code."
   (with-eval-after-load 'org (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5)))
 
   ;; org-mode
-  (setq org-startup-indented t)
-  (setq org-indent-mode t)
+  ;;(setq org-startup-indented t)
+  ;;(setq org-indent-mode t)
   (setq org-export-coding-system 'utf-8)
   (setq org-bullets-bullet-list '("◉" "►" "●" "○" "•"))
   (setq org-agenda-files (quote ("~/org-notes/gtd.org" "~/org-notes/daily.org")))
@@ -280,7 +280,7 @@ layers configuration. You are free to put any user code."
          "* TODO [#B] %?\n %i\n %t"
          :empty-lines 1)
         ("j" "Journal"  entry (file+datetree "~/org-notes/journal.org")
-         "* %?"
+         "* %?\n %i\n"
          :empty-lines 1)
         ("p" "Plan I&!U [#B]" entry (file+headline "~/org-notes/gtd.org" "Important & !Urgent")
          "* TODO [#B] %?\n %i\n %U"
