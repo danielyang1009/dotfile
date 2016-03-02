@@ -247,24 +247,22 @@ layers configuration. You are free to put any user code."
   ;; window
   ;;(split-window-right)
 
-  (add-hook 'doc-view-mode-hook 'auto-revert-mode)
-
   (global-set-key [f12] 'org-html-export-to-html)
-
-  (setq org-latex-create-formula-image-program 'dvipng)
 
   ;; nyan-mode
   (nyan-mode t)
   (nyan-start-animation)
   (setq nyan-wavy-trail t)
 
+  ;; org-mode latex preview
+  (setq org-latex-preview-ltxpng-directory "~/ltxpng/")
+  (with-eval-after-load 'org (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5)))
+
   ;; org-mode
   (setq org-startup-indented t)
   (setq org-indent-mode t)
   (setq org-export-coding-system 'utf-8)
-
   (setq org-bullets-bullet-list '("◉" "►" "●" "○" "•"))
-
   (setq org-agenda-files (quote ("~/org-notes/gtd.org" "~/org-notes/daily.org")))
   (setq org-default-notes-file "~/org-notes/gtd.org")
 
