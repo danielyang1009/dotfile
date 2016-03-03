@@ -30,13 +30,14 @@ values."
      ;;github
      ;;markdown
      org
+     python
      ;;shell
      ;;latex
      ;;(shell :variables
      ;;     shell-default-height 30)
      ;;     shell-default-position 'bottom)
-     spell-checking
-     syntax-checking
+     ;;spell-checking
+     ;;syntax-checking
      ;;version-control
      )
    ;; List of additional packages that will be installed without being
@@ -255,12 +256,13 @@ layers configuration. You are free to put any user code."
   (setq nyan-wavy-trail t)
 
   ;; org-mode latex preview
-  (setq org-latex-preview-ltxpng-directory "~/ltxpng/")
+  (setq org-latex-preview-ltxpng-directory "~/temp/ltxpng")
   (with-eval-after-load 'org (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5)))
 
+  ;;org-mode python
+  (with-eval-after-load 'org (org-babel-do-load-languages 'org-babel-load-languages '((python . t))))
+
   ;; org-mode
-  ;;(setq org-startup-indented t)
-  ;;(setq org-indent-mode t)
   (setq org-export-coding-system 'utf-8)
   (setq org-bullets-bullet-list '("◉" "►" "●" "○" "•"))
   (setq org-agenda-files (quote ("~/org-notes/gtd.org" "~/org-notes/daily.org")))
@@ -280,7 +282,7 @@ layers configuration. You are free to put any user code."
          "* TODO [#B] %?\n %i\n %t"
          :empty-lines 1)
         ("j" "Journal"  entry (file+datetree "~/org-notes/journal.org")
-         "* %?\n %i\n"
+         "* Daily shot %?\n %i\n"
          :empty-lines 1)
         ("p" "Plan I&!U [#B]" entry (file+headline "~/org-notes/gtd.org" "Important & !Urgent")
          "* TODO [#B] %?\n %i\n %U"
@@ -298,6 +300,8 @@ layers configuration. You are free to put any user code."
         ))
   )
 
+
+
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 (custom-set-variables
@@ -305,9 +309,10 @@ layers configuration. You are free to put any user code."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(org-agenda-files (quote ("~/org-notes/gtd.org" "~/org-notes/daily.org")))
  '(package-selected-packages
    (quote
-    (auctex-latexmk avy yasnippet company-auctex auctex with-editor gh async dash powerline packed smartparens projectile helm helm-core magit rainbow-mode rainbow-identifiers xterm-color shell-pop multi-term eshell-prompt-extras esh-help magit-gh-pulls github-clone github-browse-file git-link gist ws-butler window-numbering volatile-highlights vi-tilde-fringe toc-org spacemacs-theme spaceline smooth-scrolling smeargle restart-emacs rainbow-delimiters popwin persp-mode pcre2el paradox page-break-lines orgit org-repo-todo org-present org-pomodoro org-plus-contrib org-bullets open-junk-file nyan-mode neotree move-text mmm-mode markdown-toc markdown-mode magit-gitflow macrostep lorem-ipsum linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flyspell helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-gutter-fringe+ git-gutter-fringe git-gutter+ git-gutter gh-md flycheck-pos-tip flycheck flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-jumper evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu elisp-slime-nav diff-hl define-word company-statistics company-quickhelp company clean-aindent-mode buffer-move bracketed-paste auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell quelpa package-build use-package which-key bind-key bind-map evil monokai-theme))))
+    (pyvenv pytest pyenv-mode pip-requirements hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode auctex-latexmk avy yasnippet company-auctex auctex with-editor gh async dash powerline packed smartparens projectile helm helm-core magit rainbow-mode rainbow-identifiers xterm-color shell-pop multi-term eshell-prompt-extras esh-help magit-gh-pulls github-clone github-browse-file git-link gist ws-butler window-numbering volatile-highlights vi-tilde-fringe toc-org spacemacs-theme spaceline smooth-scrolling smeargle restart-emacs rainbow-delimiters popwin persp-mode pcre2el paradox page-break-lines orgit org-repo-todo org-present org-pomodoro org-plus-contrib org-bullets open-junk-file nyan-mode neotree move-text mmm-mode markdown-toc markdown-mode magit-gitflow macrostep lorem-ipsum linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flyspell helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-gutter-fringe+ git-gutter-fringe git-gutter+ git-gutter gh-md flycheck-pos-tip flycheck flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-jumper evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu elisp-slime-nav diff-hl define-word company-statistics company-quickhelp company clean-aindent-mode buffer-move bracketed-paste auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell quelpa package-build use-package which-key bind-key bind-map evil monokai-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
