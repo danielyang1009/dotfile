@@ -281,8 +281,11 @@ layers configuration. You are free to put any user code."
         ("d" "Daily [#B]" entry (file+headline "~/org-notes/daily.org" "Daily tasks")
          "* TODO [#B] %?\n %i\n %t"
          :empty-lines 1)
-        ("j" "Journal"  entry (file+datetree "~/org-notes/journal.org")
+        ("d" "Daily Shot"  entry (file+datetree "~/org-notes/journal.org")
          "* Daily shot %?\n %i\n"
+         :empty-lines 1)
+        ("j" "Journal"  entry (file+datetree "~/org-notes/journal.org")
+         "* Journal %?\n %i\n"
          :empty-lines 1)
         ("p" "Plan I&!U [#B]" entry (file+headline "~/org-notes/gtd.org" "Important & !Urgent")
          "* TODO [#B] %?\n %i\n %U"
