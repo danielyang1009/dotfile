@@ -1,4 +1,4 @@
-﻿;; -*- mode: emacs-lisp -*-
+;; -*- mode: emacs-lisp -*-
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
@@ -24,27 +24,29 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      auto-completion
-     ;;better-defaults
+     ;; better-defaults
+     (chinese :variables
+              chinese-enable-youdao.dict t)
      emacs-lisp
-     ;;git
-     ;;github
-     ;;markdown
+     ;; git
+     ;; markdown
      org
-     ;;python
-     ;;shell
-     ;;latex
-     ;;(shell :variables
-     ;;     shell-default-height 30)
-     ;;     shell-default-position 'bottom)
-     ;;spell-checking
-     ;;syntax-checking
-     ;;version-control
+     (colors :variables
+             colors-enable-nyan-cat-progress-bar t
+      )
+     ;; (shell :variables
+     ;;        shell-default-height 30
+     ;;        shell-default-position 'bottom)
+     search-engine
+     ;; spell-checking
+     ;; syntax-checking
+     ;; version-control
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(nyan-mode)
+   dotspacemacs-additional-packages '()
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -100,8 +102,9 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(leuven
-                         monokai
-                         spacemacs-dark)
+                         spacemacs-dark
+                         spacemacs-light
+                         monokai)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
@@ -235,75 +238,78 @@ values."
 
 (defun dotspacemacs/user-init ()
   "Initialization function for user code.
-It is called immediately after `dotspacemacs/init'.  You are free to put almost
-any user code here.  The exception is org related code, which should be placed
-in `dotspacemacs/user-config'."
+It is called immediately after `dotspacemacs/init', before layer configuration
+executes.
+ This function is mostly useful for variables that need to be set
+before packages are loaded. If you are unsure, you should try in setting them in
+`dotspacemacs/user-config' first."
   )
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
-layers configuration. You are free to put any user code."
+layers configuration.
+This is the place where most of your configurations should be done. Unless it is
+explicitly specified that a variable should be set before a package is loaded,
+you should place you code here."
 
+  ;; set key
   (global-set-key [f12] 'org-html-export-to-html)
+  (spacemacs/set-leader-keys "oy" 'youdao-dictionary-search-at-point+)
 
-  ;;set powerline
+  ;; set powerline
   (setq powerline-default-separator 'slant)
 
-  ;; nyan-mode
-  (nyan-mode t)
-  (nyan-start-animation)
-  (setq nyan-wavy-trail t)
+  ;; search-engine
+  (push '(yahoo-finance
+          :name "Yahoo Finance"
+          :url "http://finance.yahoo.com/q?s=%s")
+        search-engine-alist)
 
   ;; org-mode latex preview
   (setq org-latex-preview-ltxpng-directory "~/temp/ltxpng")
   (with-eval-after-load 'org (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5)))
 
-  ;;org-mode python
-  (with-eval-after-load 'org (org-babel-do-load-languages 'org-babel-load-languages '((python . t))))
+  ;; org-mode python
+  (with-eval-after-load 'org (org-babel-do-load-languages 'org-babel-load-languages '((python . t) (emacs-lisp . t))))
 
   ;; org-mode
   (setq org-export-coding-system 'utf-8)
   (setq org-bullets-bullet-list '("◉" "►" "●" "○" "•"))
   (setq org-agenda-files (quote ("~/org-notes/gtd.org" "~/org-notes/daily.org")))
   (setq org-default-notes-file "~/org-notes/gtd.org")
-
   (setq org-todo-keywords
-   (quote
-    ((sequence "TODO(t)" "STARTED(s)" "|" "DONE(d!/!)")
-    )))
-
+        (quote ((sequence "TODO(t)" "STARTED(s)" "|" "DONE(d!/!)")
+     )))
   (setq org-capture-templates
-      '(
-        ("t" "Todos I&U [#A]" entry (file+headline "~/org-notes/gtd.org" "Important & Urgent")
-         "* TODO [#A] %?\n %i\n"
-         :empty-lines 1)
-        ("d" "Daily [#B]" entry (file+headline "~/org-notes/daily.org" "Daily tasks")
-         "* TODO [#B] %?\n %i\n %t"
-         :empty-lines 1)
-        ("d" "Daily Shot"  entry (file+datetree "~/org-notes/journal.org")
-         "* Daily shot %?\n %i\n"
-         :empty-lines 1)
-        ("j" "Journal"  entry (file+datetree "~/org-notes/journal.org")
-         "* Journal %?\n %i\n"
-         :empty-lines 1)
-        ("p" "Plan I&!U [#B]" entry (file+headline "~/org-notes/gtd.org" "Important & !Urgent")
-         "* TODO [#B] %?\n %i\n %U"
-         :empty-lines 1)
-        ("l" "Long-term [#C]" entry (file+headline "~/org-notes/gtd.org" "Long-term")
-         "* TODO [#C] %?\n %i\n"
-         :empty-lines 1)
-        ))
-
+        '(
+          ("t" "Todos I&U [#A]" entry (file+headline "~/org-notes/gtd.org" "Important & Urgent")
+          "* TODO [#A] %?\n %i\n"
+          :empty-lines 1)
+         ("d" "Daily [#B]" entry (file+headline "~/org-notes/daily.org" "Daily tasks")
+          "* TODO [#B] %?\n %i\n %t"
+          :empty-lines 1)
+         ("s" "Daily Shot"  entry (file+datetree "~/org-notes/journal.org")
+          "* Daily shot %?\n %i\n"
+          :empty-lines 1)
+         ("j" "Journal"  entry (file+datetree "~/org-notes/journal.org")
+          "* Journal %?\n %i\n"
+          :empty-lines 1)
+         ("p" "Plan I&!U [#B]" entry (file+headline "~/org-notes/gtd.org" "Important & !Urgent")
+          "* TODO [#B] %?\n %i\n %U"
+          :empty-lines 1)
+         ("l" "Long-term [#C]" entry (file+headline "~/org-notes/gtd.org" "Long-term")
+          "* TODO [#C] %?\n %i\n"
+          :empty-lines 1)
+         ))
   (setq org-agenda-custom-commands
-      '(
-        ("wa" "Important & Urgent (DO)" tags-todo "+PRIORITY=\"A\"")
-        ("wb" "Important & !Urgent (Plan)" tags-todo "-weekly-monthly-daily+PRIORITY=\"B\"")
-        ("wc" "!Important & Urgent (Delegate)" tags-todo "+PRIORITY=\"C\"")
-        ))
+        '(
+         ("wa"  "Important & Urgent (DO)" tags-todo "+PRIORITY=\"A\"")
+         ("wb" "Important & !Urgent (Plan)" tags-todo "-weekly-monthly-daily+PRIORITY=\"B\"")
+         ("wc" "!Important & Urgent (Delegate)" tags-todo "+PRIORITY=\"C\"")
+         ))
+
   )
-
-
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -312,10 +318,33 @@ layers configuration. You are free to put any user code."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+
+ ;; org capture
  '(org-agenda-files (quote ("~/org-notes/gtd.org" "~/org-notes/daily.org")))
+ '(org-capture-templates
+   (quote
+    (("t" "Todos I&U [#A]" entry
+      (file+headline "~/org-notes/gtd.org" "Important & Urgent")
+      "* TODO [#A] %? %i " :empty-lines 1)
+     ("d" "Daily [#B]" entry
+      (file+headline "~/org-notes/daily.org" "Daily tasks")
+      "* TODO [#B] %? %i %t" :empty-lines 1)
+     ("s" "Daily Shot" entry
+      (file+datetree "~/org-notes/journal.org")
+      "* Daily shot %? %i" :empty-lines 1)
+     ("j" "Journal" entry
+      (file+datetree "~/org-notes/journal.org")
+      "* Journal %? %i" :empty-lines 1)
+     ("p" "Plan I&!U [#B]" entry
+      (file+headline "~/org-notes/gtd.org" "Important & !Urgent")
+      "* TODO [#B] %? %i %U" :empty-lines 1)
+     ("l" "Long-term [#C]" entry
+      (file+headline "~/org-notes/gtd.org" "Long-term")
+      "* TODO [#C] %? %i" :empty-lines 1))) t)
+
  '(package-selected-packages
    (quote
-    (uuidgen link-hint evil-ediff hydra spinner alert log4e gntp parent-mode pkg-info epl flx iedit anzu highlight pos-tip pythonic f s auto-complete popup pyvenv pytest pyenv-mode pip-requirements hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode auctex-latexmk avy yasnippet company-auctex auctex with-editor gh async dash powerline packed smartparens projectile helm helm-core magit rainbow-mode rainbow-identifiers xterm-color shell-pop multi-term eshell-prompt-extras esh-help magit-gh-pulls github-clone github-browse-file git-link gist ws-butler window-numbering volatile-highlights vi-tilde-fringe toc-org spacemacs-theme spaceline smooth-scrolling smeargle restart-emacs rainbow-delimiters popwin persp-mode pcre2el paradox page-break-lines orgit org-repo-todo org-present org-pomodoro org-plus-contrib org-bullets open-junk-file nyan-mode neotree move-text mmm-mode markdown-toc markdown-mode magit-gitflow macrostep lorem-ipsum linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flyspell helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-gutter-fringe+ git-gutter-fringe git-gutter+ git-gutter gh-md flycheck-pos-tip flycheck flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-jumper evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu elisp-slime-nav diff-hl define-word company-statistics company-quickhelp company clean-aindent-mode buffer-move bracketed-paste auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell quelpa package-build use-package which-key bind-key bind-map evil monokai-theme))))
+    (engine-mode pangu-spacing find-by-pinyin-dired chinese-pyim ace-pinyin ace-jump-mode rainbow-mode rainbow-identifiers toc-org org-repo-todo org-present org-pomodoro alert log4e gntp org-plus-contrib org-bullets htmlize helm-company helm-c-yasnippet gnuplot company-statistics company-quickhelp pos-tip company auto-yasnippet yasnippet ac-ispell auto-complete ws-butler window-numbering volatile-highlights vi-tilde-fringe spaceline s powerline smooth-scrolling restart-emacs rainbow-delimiters popwin persp-mode pcre2el paradox hydra spinner page-break-lines open-junk-file neotree move-text macrostep lorem-ipsum linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-jumper evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-args evil-anzu anzu eval-sexp-fu highlight elisp-slime-nav define-word clean-aindent-mode buffer-move bracketed-paste auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async quelpa package-build use-package which-key bind-key bind-map evil spacemacs-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
