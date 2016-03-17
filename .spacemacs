@@ -26,10 +26,10 @@ values."
      auto-completion
      ;; better-defaults
      (chinese :variables
-              chinese-enable-youdao.dict t)
+              chinese-enable-youdao-dict t)
      emacs-lisp
      ;; git
-     ;; markdown
+     markdown
      org
      (colors :variables
              colors-enable-nyan-cat-progress-bar t)
@@ -78,7 +78,7 @@ values."
    ;; variable is `emacs' then the `holy-mode' is enabled at startup. `hybrid'
    ;; uses emacs key bindings for vim's insert mode, but otherwise leaves evil
    ;; unchanged. (default 'vim)
-   dotspacemacs-editing-style 'hybrid
+   dotspacemacs-editing-style 'vim
    ;; If non nil output loading progress in `*Messages*' buffer. (default nil)
    dotspacemacs-verbose-loading nil
    ;; Specify the startup banner. Default value is `official', it displays
@@ -251,6 +251,11 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place you code here."
+  ;; show menu bar
+  (spacemacs/toggle-menu-bar-on)
+
+  ;; chinese characters
+  (spacemacs//set-monospaced-font   "Source Code Pro" "Hiragino Sans GB" 14 16)
 
   ;; set key
   (global-set-key [f12] 'org-html-export-to-html)
@@ -294,6 +299,9 @@ you should place you code here."
          ("j" "Journal"  entry (file+datetree "~/org-notes/journal.org")
           "* Journal %?\n %i\n"
           :empty-lines 1)
+         ("i" "Ideas" entry (file+headline "~/org-notes/ideas.org" "Inbox")
+          "* %?\n %i\n %t"
+          :empty-lines 1)
          ("p" "Plan I&!U [#B]" entry (file+headline "~/org-notes/gtd.org" "Important & !Urgent")
           "* TODO [#B] %?\n %i\n %U"
           :empty-lines 1)
@@ -317,8 +325,6 @@ you should place you code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
-
- ;; org capture
  '(org-agenda-files (quote ("~/org-notes/gtd.org" "~/org-notes/daily.org")))
  '(org-capture-templates
    (quote
@@ -340,10 +346,9 @@ you should place you code here."
      ("l" "Long-term [#C]" entry
       (file+headline "~/org-notes/gtd.org" "Long-term")
       "* TODO [#C] %? %i" :empty-lines 1))) t)
-
  '(package-selected-packages
    (quote
-    (engine-mode pangu-spacing find-by-pinyin-dired chinese-pyim ace-pinyin ace-jump-mode rainbow-mode rainbow-identifiers toc-org org-repo-todo org-present org-pomodoro alert log4e gntp org-plus-contrib org-bullets htmlize helm-company helm-c-yasnippet gnuplot company-statistics company-quickhelp pos-tip company auto-yasnippet yasnippet ac-ispell auto-complete ws-butler window-numbering volatile-highlights vi-tilde-fringe spaceline s powerline smooth-scrolling restart-emacs rainbow-delimiters popwin persp-mode pcre2el paradox hydra spinner page-break-lines open-junk-file neotree move-text macrostep lorem-ipsum linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-jumper evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-args evil-anzu anzu eval-sexp-fu highlight elisp-slime-nav define-word clean-aindent-mode buffer-move bracketed-paste auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async quelpa package-build use-package which-key bind-key bind-map evil spacemacs-theme))))
+    (mmm-mode markdown-toc gh-md markdown-mode pdf-tools youdao-dictionary names chinese-word-at-point engine-mode pangu-spacing find-by-pinyin-dired chinese-pyim ace-pinyin ace-jump-mode rainbow-mode rainbow-identifiers toc-org org-repo-todo org-present org-pomodoro alert log4e gntp org-plus-contrib org-bullets htmlize helm-company helm-c-yasnippet gnuplot company-statistics company-quickhelp pos-tip company auto-yasnippet yasnippet ac-ispell auto-complete ws-butler window-numbering volatile-highlights vi-tilde-fringe spaceline s powerline smooth-scrolling restart-emacs rainbow-delimiters popwin persp-mode pcre2el paradox hydra spinner page-break-lines open-junk-file neotree move-text macrostep lorem-ipsum linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-jumper evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-args evil-anzu anzu eval-sexp-fu highlight elisp-slime-nav define-word clean-aindent-mode buffer-move bracketed-paste auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async quelpa package-build use-package which-key bind-key bind-map evil spacemacs-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
