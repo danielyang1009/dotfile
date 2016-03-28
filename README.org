@@ -53,3 +53,17 @@ emacs\bin\runemacs.exe
 #+END_SRC
 
 ** Templates
+* Arch Linux
+** Install
+- [[https://wiki.archlinux.org/index.php/Installation_guide][Installation Guide]]
+
+
+#+BEGIN_SRC
+base base-devel grub
+
+xorg-xinit xorg-server xorg-server-utils xorg-apps alsa-utils
+
+vim wget p7zip unzip zip unrar
+
+fortune-mod cowsay lesspipe firefox virtualbox-guest-utils
+#+END_SRC

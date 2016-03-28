@@ -2,23 +2,12 @@
 ;;
 ;; Author: Daniel Yang
 
-(setq gc-cons-threshold 100000000)
-
-;; Keep track of loading time
-(defconst emacs-start-time (current-time))
 ;; initalize all ELPA packages
 (require 'package)
-
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 ;;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
-
 (package-initialize)
-
-(setq package-enable-at-startup nil)
-(let ((elapsed (float-time (time-subtract (current-time)
-                                            emacs-start-time))))
-(message "Loaded packages in %.3fs" elapsed))
 
 (require 'monokai-theme)
 
@@ -40,7 +29,6 @@
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "C-x f") 'helm-find-files)
-
 
 ;; org-mode
 (require 'org)
