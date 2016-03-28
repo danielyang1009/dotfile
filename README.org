@@ -57,7 +57,6 @@ emacs\bin\runemacs.exe
 ** Install
 - [[https://wiki.archlinux.org/index.php/Installation_guide][Installation Guide]]
 
-
 #+BEGIN_SRC
 base base-devel grub
 
@@ -65,5 +64,32 @@ xorg-xinit xorg-server xorg-server-utils xorg-apps alsa-utils xorg-utils
 
 vim wget p7zip unzip zip unrar
 
-fortune-mod cowsay lesspipe firefox virtualbox-guest-utils
 #+END_SRC
+
+** Setup Internet
+ip a
+/etc/netctl
+netctl enable *profile*
+netctl start *profile*
+
+** Set language
+vim /etc/locale.gen
+locale-gen
+
+** Set time zone
+ln -sf /usr/share/timeinfo/US/Eastern /etc/localtime
+
+** Change hostname
+echo *hostname* > /etc/hostname
+useradd -m -g users -G wheel -s /bin/bash *username*
+passwd *username*
+vim /etc/sudoers
+
+** Update System
+pacman -Syu
+
+** Add base-devel
+pacman -S base-devel
+pacman -S vim
+
+
