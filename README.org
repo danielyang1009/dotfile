@@ -61,7 +61,7 @@ emacs\bin\runemacs.exe
 #+BEGIN_SRC
 base base-devel grub
 
-xorg-xinit xorg-server xorg-server-utils xorg-apps alsa-utils
+xorg-xinit xorg-server xorg-server-utils xorg-apps alsa-utils xorg-utils
 
 vim wget p7zip unzip zip unrar
 
