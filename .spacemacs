@@ -258,6 +258,12 @@ you should place you code here."
   ;; chinese characters
   (spacemacs//set-monospaced-font   "Source Code Pro" "Hiragino Sans GB" 14 16)
 
+  ;; backup file
+  ;;(setq make-backup-files nil)
+
+  ;; hungry delete
+  (global-hungry-delete-mode)
+
   ;; set key
   (global-set-key [f12] 'org-html-export-to-html)
   (spacemacs/set-leader-keys "oy" 'youdao-dictionary-search-at-point+)
@@ -277,6 +283,9 @@ you should place you code here."
 
   ;; org truncated line
   (setq org-startup-truncated nil)
+
+  ;; org codeblock syntax highlight
+  (setq org-src-fontify-natively t)
 
   ;; org-mode python
   (with-eval-after-load 'org (org-babel-do-load-languages 'org-babel-load-languages '((python . t) (emacs-lisp . t))))
