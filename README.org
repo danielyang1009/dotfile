@@ -92,4 +92,4 @@ pacman -Syu
 pacman -S base-devel
 pacman -S vim
 
-
+pacman -S xf86-video-fbdev
