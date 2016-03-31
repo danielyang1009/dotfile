@@ -87,7 +87,7 @@ values."
    ;; directory. A string value must be a path to an image format supported
    ;; by your Emacs build.
    ;; If the value is nil then no banner is displayed. (default 'official)
-   dotspacemacs-startup-banner 'random
+   dotspacemacs-startup-banner 'official
    ;; List of items to show in the startup buffer. If nil it is disabled.
    ;; Possible values are: `recents' `bookmarks' `projects'.
    ;; (default '(recents projects))
@@ -264,9 +264,17 @@ you should place you code here."
   ;; hungry delete
   (global-hungry-delete-mode)
 
-  ;; set key
+  ;; Key Map
+  ;; t: evil-find-char-to
+  ;; T: evil-find-char-to-backward
   (global-set-key [f12] 'org-html-export-to-html)
   (spacemacs/set-leader-keys "oy" 'youdao-dictionary-search-at-point+)
+  (add-hook 'org-mode-hook
+            (define-key evil-normal-state-map (kbd "t") 'evil-find-char-to)
+            (define-key evil-normal-state-map (kbd "T") 'evil-find-char-to-backward)
+  )
+  (global-set-key (kbd "C-h C-f") 'find-function)
+  (global-set-key (kbd "C-h C-v") 'find-variable)
 
   ;; set powerline
   (setq powerline-default-separator 'slant)
