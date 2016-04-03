@@ -1,96 +1,94 @@
-﻿;; init.el --- Emacs Initialization File
-;;
-;; Author: Daniel Yang
-
-;; initalize all ELPA packages
+;; Daniel Config File
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-;;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
 
-(require 'monokai-theme)
+(require 'cl)
 
-;; nyan-mode
-(nyan-mode t)
-(nyan-start-animation)
-(setq nyan-wavy-trail t)
-
-(require 'which-key)
-(which-key-mode t)
-(which-key-setup-side-window-bottom)
-
-(require 'magit)
-(global-set-key "\C-xg" 'magit-status)
-
-(require 'helm)
-(require 'helm-config)
-(helm-mode t)
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "C-x f") 'helm-find-files)
-
-;; org-mode
-(require 'org)
-(require 'org-bullets)
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-(setq org-bullets-bullet-list '("◉" "►" "●" "○" "•"))
-(helm-autoresize-mode t)
-
-(setq org-agenda-files (quote ("~/org-notes" )))
-(setq org-default-notes-file "~/org-notes/gtd.org")
-
-(global-set-key (kbd "C-c c") 'org-capture)
-(global-set-key (kbd "C-c l") 'org-store-link)
-(global-set-key (kbd "C-c a") 'org-agenda)
-
-
-  (setq org-startup-indented t)
-  (setq org-indent-mode t)
-  (setq org-export-coding-system 'utf-8)
-  (setq org-todo-keywords
-   (quote
-    ((sequence "TODO(t)" "STARTED(s)" "|" "DONE(d!/!)")
-     (sequence "PROJECT(p)" "|" "DONE(d!/!)" "CANCELLED(c@/!)")
-     (sequence "WAITING(w@/!)" "HOLD(h)" "|" "CANCELLED(c@/!)"))))
-
-  (setq org-capture-templates
-      '(
-        ("t" "Todos [#A]" entry (file+headline "~/org-notes/gtd.org" "Important & Urgent")
-         "* TODO [#A] %?\n %i\n"
-         :empty-lines 1)
-        ("d" "Daily [#B]" entry (file+headline "~/org-notes/gtd.org" "Daily tasks")
-         "* TODO [#B] %?\n %i\n %t"
-         :empty-lines 1)
-        ("p" "Plan [#B]" entry (file+headline "~/org-notes/gtd.org" "Important & !Urgent")
-         "* TODO [#B] %?\n %i\n %U"
-         :empty-lines 1)
-        ("l" "Long-term [#C]" entry (file+headline "~/org-notes/gtd.org" "Long-term")
-         "* TODO [#C] %?\n %i\n"
-         :empty-lines 1)
-        ))
-
-  (setq org-agenda-custom-commands
-      '(
-        ("wa" "Important & Urgent (DO)" tags-todo "+PRIORITY=\"A\"")
-        ("wb" "Important & !Urgent (Plan)" tags-todo "-weekly-monthly-daily+PRIORITY=\"B\"")
-        ("wc" "!Important & Urgent (Delegate)" tags-todo "+PRIORITY=\"C\"")
-        ))
-
-;; start up
-(setq inhibit-startup-screen t)
-(setq initial-major-mode 'org-mode)
-(setq initial-scratch-message nil)
-
-
-;; main window
+;; Window
+(menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
-(menu-bar-mode -1)
-(display-time-mode 1)
+(setq inhibit-splash-screen t)
+(setq initial-frame-alist (quote ((fullscreen . maximized))))
+
+(defvar daniel/packages '(
+			  company
+			  monokai-theme
+			  hungry-delete
+			  swiper
+			  counsel
+			  evil
+			  smartparens
+			  linum-relative
+			  org
+			  ) "Default packages")
+(defun daniel/packages-installed-p ()
+  (loop for pkg in daniel/packages
+	when (not (package-installed-p pkg)) do (return nil)
+	finally (return t)))
+(unless (daniel/packages-installed-p)
+  (message "%s" "refreshing package database...")
+  (package-refresh-contents)
+  (dolist (pkg daniel/packages)
+    (when (not (package-installed-p pkg))
+      (package-install pkg))))
+
+(defun open-my-init-file()
+  (interactive)
+  (find-file "~/.emacs.d/init.el"))
+(global-set-key (kbd "<f2>") 'open-my-init-file)
+
+(require 'linum-relative)
+(linum-relative-global-mode)
+
+(global-company-mode t)
+(setq-default cursor-type 'bar)
+(setq make-backup-files nil)
+
+(load-theme 'monokai t)
+
+(require 'hungry-delete)         
+(global-hungry-delete-mode)
+
+(require 'evil)
+(evil-mode 1)
+
+(require 'ivy)
+(ivy-mode 1)
+(setq ivy-use-virtual-buffers t)
+(global-set-key "\C-s" 'swiper)
+(global-set-key (kbd "M-x") 'counsel-M-x)
+(global-set-key (kbd "C-x C-f") 'counsel-find-file)
+(global-set-key (kbd "C-h f") 'counsel-describe-function)
+(global-set-key (kbd "C-h v") 'counsel-describe-variable)
+
+(require 'recentf)
+(recentf-mode t)
+(global-set-key (kbd "C-x C-r") 'recentf-open-files)
+
+(set-face-attribute 'default nil :font "Source Code Pro-10")
+(set-frame-font "Source Code Pro-10" nil t)
+
+(require 'smartparens-config)
+;;(add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
+(smartparens-global-mode)
+
+(require 'org)
 
 
-;; Message how long it took to load everything (minus packages)
-(let ((elapsed (float-time (time-subtract (current-time)
-                                            emacs-start-time))))
-(message "Loading settings...done (%.3fs)" elapsed))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("6c62b1cd715d26eb5aa53843ed9a54fc2b0d7c5e0f5118d4efafa13d7715c56e" default))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
