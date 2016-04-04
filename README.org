@@ -56,40 +56,104 @@ emacs\bin\runemacs.exe
 * Arch Linux
 ** Install
 - [[https://wiki.archlinux.org/index.php/Installation_guide][Installation Guide]]
+** Format Disk
+cfdisk /dev/sda
+100M for BIOS BOOT using GPT to install grub
+Linux
+Linux swap
 
-#+BEGIN_SRC
-base base-devel grub
+lsblk
 
-xorg-xinit xorg-server xorg-server-utils xorg-apps alsa-utils xorg-utils
-
-vim wget p7zip unzip zip unrar
-
-#+END_SRC
-
+mkfs.ext4 /dev/sda2
+mount /dev/sda2 /mnt
+mkswap /dev/sda3
+swapon /dev/sda3
 ** Setup Internet
 ip a
+wife-menu
 /etc/netctl
 netctl enable *profile*
 netctl start *profile*
+** pacstrap
+#+BEGIN_SRC
+pacstrap /mnt base base-devel grub
 
+xorg-xinit xorg-utils xorg-server xorg-server-utils xorg-apps
+dialog wpa_supplicant ;; wifi
+alsa-utils ;; sound
+
+vim zsh git terminator tmux
+wget p7zip unzip zip unrar
+#+END_SRC
+** ftab
+genfstab -p /mnt >> /mnt/etc/fstab
+** arch-chroot
+arch-chroot /mnt
+passwd
 ** Set language
 vim /etc/locale.gen
 locale-gen
-
 ** Set time zone
 ln -sf /usr/share/timeinfo/US/Eastern /etc/localtime
-
 ** Change hostname
 echo *hostname* > /etc/hostname
 useradd -m -g users -G wheel -s /bin/bash *username*
 passwd *username*
 vim /etc/sudoers
-
+** grub
+grub-install /dev/sda
+mkinitcpio -p linux
+grub-mkconfig -o /boot/grub/grub.cfg
+exit
+** Unmount
+umount -R /mnt
 ** Update System
-pacman -Syu
-
-** Add base-devel
-pacman -S base-devel
-pacman -S vim
-
+sudo pacman -Syu
+** gnome
+*** xinit
+cp /etc/X11/xinit/xinitrc ~/.xinitrc
+*** Install
+pacman -S gnome
+pacman -S xf86-video-intel
+systemctl enable gdm.service
+*** Remove
+pacman -Rscn gnome
+** KDE plasma
+*** Install
+pacman -S plasma
+*** Error log
+vim .local/share/xorg/Xorg.0.log
+**** failed to load fbdev
 pacman -S xf86-video-fbdev
+**** failed to load vesa
+pacman -S xf86-video-intel
+*** Ctrl+Alt+F3
+*** kbuildsycoca5
+*** Caps lock
+keyboard layout
+*** network
+sudo systemctl enable NetworkManager
+*** sddm DONT
+systemctl enable sddm.service
+*** kde wallet
+kwalletmanager
+*** etc
+sudo pacman -S python-pip
+*** fonts
+pacman -S ttf-dejavu ttf-liberation adobe-source-code-pro-fonts
+** zsh
+oh-my-zsh
+agnoster.zsh-theme
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+https://github.com/powerline/fonts.git
+echo "\ue0b0 \u00b1 \ue0a0 \u27a6 \u2718 \u26a1 \u2699"
+localectl set-locale LANG=en_US.UTF-8
+** AUR
+#+BEGIN_SRC
+wget https://aur.archlinux.org/cgit/aur.git/snapshot/package-query.tar.gz
+wget https://aur.archlinux.org/cgit/aur.git/snapshot/yaourt.tar.gz
+
+tar -xvf pacakgename.tar.gz
+
+makepkg -sri
+#+END_SRC
