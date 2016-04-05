@@ -98,7 +98,6 @@ cfdisk /dev/sda
 100M for BIOS BOOT using GPT to install grub
 Linux
 Linux swap
-
 lsblk
 
 mkfs.ext4 /dev/sda2
@@ -149,8 +148,7 @@ sudo pacman -Syu
 ** i3wm
 i3-wm i3status dmenu
 xf86-video-intel
-xf85-video-fbdev
-
+xf86-video-fbdev
 ** zsh
 oh-my-zsh
 agnoster.zsh-theme
@@ -184,9 +182,21 @@ add control = Control_L Control_R
 cat /etc/locale.conf
 LANG="EN_US.UTF-8"
 #+END_SRC
-** fonts
+** system beep
+~/etc/inputrc~
+#+BEGIN_SRC
+set bell-style none
+#+END_SRC
+Blacklisting the pcspkr module will prevent udev from loading it at boot:
+# echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf
+Blacklisting it on the kernel command line is yet another way. Simply add modprobe.blacklist=pcspkr to your bootloader's kernel line.
+** TODO fonts
+xorg-xlsfonts
+** TODO test .Xresources
+xrdb -load ~/.Xresources
 ** time
 pacman -S ntp
-ntpq -p
+reboot
+ntpq -p ;; show list
 ** TODO auto wireless network
 ** TODO login screen
