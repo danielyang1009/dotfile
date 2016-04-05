@@ -54,9 +54,46 @@ emacs\bin\runemacs.exe
 
 ** Templates
 * Arch Linux
+** Archieves
+*** gnome
+**** xinit
+cp /etc/X11/xinit/xinitrc ~/.xinitrc
+**** Install
+pacman -S gnome
+pacman -S xf86-video-intel
+systemctl enable gdm.service
+**** Remove
+pacman -Rscn gnome
+*** KDE plasma
+**** Install
+pacman -S plasma
+**** Error log
+vim .local/share/xorg/Xorg.0.log
+***** failed to load fbdev
+pacman -S xf86-video-fbdev
+***** failed to load vesa
+pacman -S xf86-video-intel
+**** Ctrl+Alt+F3
+command line
+**** kbuildsycoca5
+generate menu
+**** Caps lock
+Setting > Keyboardlayout
+**** network
+sudo systemctl enable NetworkManager
+**** sddm DONT
+systemctl enable sddm.service
+**** kde wallet
+kwalletmanager
+**** etc
+sudo pacman -S python-pip
+**** fonts
+pacman -S ttf-dejavu ttf-liberation adobe-source-code-pro-fonts
+**** caps -> ctl
+sudo loadkeys emacs
 ** Install
 - [[https://wiki.archlinux.org/index.php/Installation_guide][Installation Guide]]
-** Format Disk
+*** Format Disk
 cfdisk /dev/sda
 100M for BIOS BOOT using GPT to install grub
 Linux
@@ -68,13 +105,13 @@ mkfs.ext4 /dev/sda2
 mount /dev/sda2 /mnt
 mkswap /dev/sda3
 swapon /dev/sda3
-** Setup Internet
+*** Setup Internet
 ip a
 wife-menu
 /etc/netctl
 netctl enable *profile*
 netctl start *profile*
-** pacstrap
+*** pacstrap
 #+BEGIN_SRC
 pacstrap /mnt base base-devel grub
 
@@ -85,62 +122,35 @@ alsa-utils ;; sound
 vim zsh git terminator tmux
 wget p7zip unzip zip unrar
 #+END_SRC
-** ftab
+*** ftab
 genfstab -p /mnt >> /mnt/etc/fstab
-** arch-chroot
+*** arch-chroot
 arch-chroot /mnt
 passwd
-** Set language
+*** Set language
 vim /etc/locale.gen
 locale-gen
-** Set time zone
+*** Set time zone
 ln -sf /usr/share/timeinfo/US/Eastern /etc/localtime
-** Change hostname
+*** Change hostname
 echo *hostname* > /etc/hostname
 useradd -m -g users -G wheel -s /bin/bash *username*
 passwd *username*
 vim /etc/sudoers
-** grub
+*** grub
 grub-install /dev/sda
 mkinitcpio -p linux
 grub-mkconfig -o /boot/grub/grub.cfg
 exit
-** Unmount
+*** Unmount
 umount -R /mnt
-** Update System
+*** Update System
 sudo pacman -Syu
-** gnome
-*** xinit
-cp /etc/X11/xinit/xinitrc ~/.xinitrc
-*** Install
-pacman -S gnome
-pacman -S xf86-video-intel
-systemctl enable gdm.service
-*** Remove
-pacman -Rscn gnome
-** KDE plasma
-*** Install
-pacman -S plasma
-*** Error log
-vim .local/share/xorg/Xorg.0.log
-**** failed to load fbdev
-pacman -S xf86-video-fbdev
-**** failed to load vesa
-pacman -S xf86-video-intel
-*** Ctrl+Alt+F3
-*** kbuildsycoca5
-*** Caps lock
-keyboard layout
-*** network
-sudo systemctl enable NetworkManager
-*** sddm DONT
-systemctl enable sddm.service
-*** kde wallet
-kwalletmanager
-*** etc
-sudo pacman -S python-pip
-*** fonts
-pacman -S ttf-dejavu ttf-liberation adobe-source-code-pro-fonts
+** i3wm
+i3-wm i3status dmenu
+xf86-video-intel
+xf85-video-fbdev
+
 ** zsh
 oh-my-zsh
 agnoster.zsh-theme
@@ -148,6 +158,10 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 https://github.com/powerline/fonts.git
 echo "\ue0b0 \u00b1 \ue0a0 \u27a6 \u2718 \u26a1 \u2699"
 localectl set-locale LANG=en_US.UTF-8
+
+python2-powerline-git
+oh-my-zsh-git
+zsh-syntax-highlighting
 ** AUR
 #+BEGIN_SRC
 wget https://aur.archlinux.org/cgit/aur.git/snapshot/package-query.tar.gz
@@ -157,3 +171,22 @@ tar -xvf pacakgename.tar.gz
 
 makepkg -sri
 #+END_SRC
+** mode capslk
+#+BEGIN_SRC
+~/.Xmodmap
+clear lock
+clear control
+keycode 66 = Control_L
+add control = Control_L Control_R
+#+END_SRC
+** locale
+#+BEGIN_SRC
+cat /etc/locale.conf
+LANG="EN_US.UTF-8"
+#+END_SRC
+** fonts
+** time
+pacman -S ntp
+ntpq -p
+** TODO auto wireless network
+** TODO login screen
