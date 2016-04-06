@@ -54,43 +54,6 @@ emacs\bin\runemacs.exe
 
 ** Templates
 * Arch Linux
-** Archieves
-*** gnome
-**** xinit
-cp /etc/X11/xinit/xinitrc ~/.xinitrc
-**** Install
-pacman -S gnome
-pacman -S xf86-video-intel
-systemctl enable gdm.service
-**** Remove
-pacman -Rscn gnome
-*** KDE plasma
-**** Install
-pacman -S plasma
-**** Error log
-vim .local/share/xorg/Xorg.0.log
-***** failed to load fbdev
-pacman -S xf86-video-fbdev
-***** failed to load vesa
-pacman -S xf86-video-intel
-**** Ctrl+Alt+F3
-command line
-**** kbuildsycoca5
-generate menu
-**** Caps lock
-Setting > Keyboardlayout
-**** network
-sudo systemctl enable NetworkManager
-**** sddm DONT
-systemctl enable sddm.service
-**** kde wallet
-kwalletmanager
-**** etc
-sudo pacman -S python-pip
-**** fonts
-pacman -S ttf-dejavu ttf-liberation adobe-source-code-pro-fonts
-**** caps -> ctl
-sudo loadkeys emacs
 ** Install
 - [[https://wiki.archlinux.org/index.php/Installation_guide][Installation Guide]]
 *** Format Disk
