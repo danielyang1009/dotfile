@@ -11,9 +11,9 @@ URxvt*urlLauncher: chromium
 ! using xlsfonts from package xorg-xlsfonts to find fonts
 !URxvt*font: -xos4-terminus-medium-*-*-*-14-*-*-*-*-*-*-*
 !URxvt*boldFont: -xos4-terminus-bold-*-*-*-14-*-*-*-*-*-*-*
-Urxvt*font: xft:Terminus:pixelsize=12,xft:Inconsolata\ for\ Powerline:pixelsize=12
+!URxvt*font: xft:Source\ Code\ Pro\ Medium:pixelsize=13:antialias=true:hinting=true,xft:Source\ Code\ Pro\ Medium:pixelsize=13:antialias=true:hinting=true
 URxvt*font: xft:Source\ Code\ Pro\ Medium:pixelsize=13:antialias=true:hinting=true,xft:Source\ Code\ Pro\ Medium:pixelsize=13:antialias=true:hinting=true
-
+URxvt*letterSpace: -1
 
 ! - perl extensions - 
 
