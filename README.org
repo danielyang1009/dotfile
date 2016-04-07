@@ -109,9 +109,20 @@ umount -R /mnt
 *** Update System
 sudo pacman -Syu
 ** i3wm
+Basic Pacakge
+#+BEGIN_SRC
 i3-wm i3status dmenu
 xf86-video-intel
 xf86-video-fbdev
+#+END_SRC
+
+Additional package
+#+BEGIN_SRC
+feh
+networkmanager network-manager-applet    ;; nm-applet
+xfce4-power-manager ;; xfce4-power-manager-settings
+#+END_SRC
+
 ** zsh
 oh-my-zsh
 agnoster.zsh-theme
@@ -140,6 +151,8 @@ clear control
 keycode 66 = Control_L
 add control = Control_L Control_R
 #+END_SRC
+/etc/vconsole.conf
+KEYMAP=emacs
 ** locale
 #+BEGIN_SRC
 cat /etc/locale.conf
