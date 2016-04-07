@@ -86,6 +86,6 @@ export LANG=en_US.UTF-8
 alias zshrc="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias vimrc="vim ~/.vimrc"
-alias i3rc="vim ~/.i3/config"
+alias i3rc="vim ~/.config/i3/config"
 alias xrc="vim ~/.Xresources"
 alias xup="xrdb -load ~/.Xresources"

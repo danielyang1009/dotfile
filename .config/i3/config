@@ -20,7 +20,7 @@ set $ws9 9
 # - font -
 # font pango:noto sans 8
 # font pango:monospace 8
- font pango:Terminus 8
+font pango:Terminus 8
 
 # - i3bar -
 bar {
@@ -29,11 +29,11 @@ bar {
 }
 
 # - bind apps to workspace -
-assign [class="urxvt"]  $ws1
+assign [class="URxvt"]  $ws1
 assign [class="luakit"]  $ws2
-assign [class="emacs"]  $ws3
-assign [class="(?!)intellij"]  $ws4
-assign [class="(?!)thunar"] $ws5
+assign [class="Emacs"]  $ws3
+#assign [class="intellij"]  $ws4
+assign [class="Thunar"] $ws5
 
 # - change focus -
 bindsym Mod1+$left focus left
@@ -45,11 +45,13 @@ bindsym Mod1+a focus parent
 
 # - app keybindings -
 bindsym Mod1+d exec --no-startup-id i3-dmenu-desktop
-bindsym Mod1+Return exec --no-startup-id urxvt
+bindsym Mod1+Return exec --no-startup-id urxvt -e tmux
+bindsym Mod1+f exec --no-startup-id thunar
+bindsym Mod1+w exec --no-startup-id luakit
 
 # - wm keybindings -
-bindsym Mod1+r mode "resize"
-bindsym Mod1+f fullscreen toggle
+# bindsym Mod1+f fullscreen toggle
+# bindsym Mod1+q kill
 bindsym Mod1+Shift+q kill
 bindsym Mod1+Shift+$left move left
 bindsym Mod1+Shift+$down move down
@@ -59,16 +61,14 @@ bindsym Mod1+Shift+$right move right
 # - layout -
 # bindsym Mod1+v split v
 # bindsym Mod1+h split h
-bindsym Mod1+s layout stacking
-bindsym Mod1+w layout tabbed
-bindsym Mod1+e layout toggle split
-
-# - system - 
-bindsym Mod1+Shift+c reload
-bindsym Mod1+Shift+r restart
-bindsym Mod1+Shift+e exec "i3-msg exit"
+# bindsym Mod1+s layout stacking
+# bindsym Mod1+w layout tabbed
+# bindsym Mod1+e layout toggle split
 
 # - workspace navigation -
+# bindsym Mod1+Tab workspace back_and_forth
+bindsym Mod1+Tab workspace next
+bindsym Mod1+Shift+Tab workspace prev
 bindsym Mod1+1 workspace $ws1
 bindsym Mod1+2 workspace $ws2
 bindsym Mod1+3 workspace $ws3
@@ -91,6 +91,7 @@ bindsym Mod1+Shift+9 move container to workspace $ws9
 bindsym Mod1+Shift+0 move container to workspace 10 $ws10
 
 # - resize window -
+bindsym Mod1+r mode "resize"
 mode "resize" {
         bindsym $left       resize shrink width 10 px or 10 ppt
         bindsym $down       resize grow height 10 px or 10 ppt
@@ -104,8 +105,23 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
+# - sysmenu -
+set $sysmenu "System: [r]eload [l]ogout [p]oweroff re[b]oot"
+bindsym Mod1+Delete mode $sysmenu
+mode $sysmenu {
+    bindsym r       restart
+    bindsym l       exit
+    bindsym p       exec shutdown -P now
+    bindsym b       exec shutdown -r now
+    bindsym Return  mode "default"
+    bindsym Escape  mode "default"
+}
+
+
 # - dont follow mouse -
 focus_follows_mouse no
+
+for_window [window_role="pop-up"] floating enable
 
 # - auto start - 
 exec --no-startup-id feh --bg-fill ~/5mrzmQl.png
@@ -115,3 +131,4 @@ exec --no-startup-id xfce4-volumed
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id clipit
 exec --no-startup-id xfce4-volumed
+exec --no-startup-id urxvt -e tmux
