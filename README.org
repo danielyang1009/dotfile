@@ -176,3 +176,11 @@ reboot
 ntpq -p ;; show list
 ** TODO auto wireless network
 ** TODO login screen
+** conky+ i3status
+- create conky as executable script, best put in .config/conky/conky, and also .conkyrc
+chmod u+x on conky
+
+
+
+
+
