@@ -55,10 +55,6 @@ add_binds("all", {
     key({"Control"}, "[", "Return to `normal` mode.",
         function (w) w:set_mode() end),
 
--- add Ctrl-c to normal mode
-    key({"Control"}, "c", "Return to `normal` mode.",
-        function (w) w:set_mode() end),
-
     -- Mouse bindings
     but({}, 8, "Go back.",
         function (w) w:back() end),
