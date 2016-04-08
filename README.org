@@ -119,7 +119,7 @@ xf86-video-fbdev
 Additional package
 #+BEGIN_SRC
 feh
-networkmanager network-manager-applet    ;; nm-applet
+
 xfce4-power-manager ;; xfce4-power-manager-settings
 #+END_SRC
 
@@ -144,6 +144,7 @@ tar -xvf pacakgename.tar.gz
 makepkg -sri
 #+END_SRC
 ** mode capslk
+*** In X
 #+BEGIN_SRC
 ~/.Xmodmap
 clear lock
@@ -151,6 +152,8 @@ clear control
 keycode 66 = Control_L
 add control = Control_L Control_R
 #+END_SRC
+
+*** In console
 /etc/vconsole.conf
 KEYMAP=emacs
 ** locale
@@ -179,8 +182,3 @@ ntpq -p ;; show list
 ** conky+ i3status
 - create conky as executable script, best put in .config/conky/conky, and also .conkyrc
 chmod u+x on conky
-
-
-
-
-
