@@ -1,3 +1,13 @@
+" - theme -
+color slate
+
+" - keybinds -
+inoremap ( ()<Esc>i
+inoremap [ []<Esc>i
+inoremap { {}<Esc>i
+inoremap ' ''<Esc>i
+inoremap " ""<Esc>i
+
 " - unmap arror keys -
 no <down> ddp
 no <left> <Nop>
@@ -31,6 +41,7 @@ set rnu
 syntax on
 set title
 set encoding=utf-8
+set noswapfile
 
 " - temp -
 

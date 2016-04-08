@@ -8,8 +8,8 @@ set $right l
 
 # - set workspace -
 set $ws1 "1:URxvt"
-set $ws2 "2:Luakit"
-set $ws3 "3:Emacs"
+set $ws2 "2:Emacs"
+set $ws3 "3:Luakit"
 set $ws4 "4:Intellij"
 set $ws5 "5:Thunar"
 set $ws6 6
@@ -18,22 +18,21 @@ set $ws8 8
 set $ws9 9
 
 # - font -
-# font pango:noto sans 8
-# font pango:monospace 8
 font pango:Terminus 8
 
 # - i3bar -
 bar {
     position top
-    status_command i3status
+    # status_command i3status
+    status_command ~/.config/conky/conky
 }
 
 # - bind apps to workspace -
-assign [class="URxvt"]  $ws1
-assign [class="luakit"]  $ws2
-assign [class="Emacs"]  $ws3
-#assign [class="intellij"]  $ws4
-assign [class="Thunar"] $ws5
+assign [class="URxvt"]          $ws1
+assign [class="Emacs"]          $ws2
+assign [class="luakit"]         $ws3
+#assign [class="intellij"]      $ws4
+assign [class="Thunar"]         $ws5
 
 # - change focus -
 bindsym Mod1+$left focus left
@@ -51,8 +50,8 @@ bindsym Mod1+w exec --no-startup-id luakit
 
 # - wm keybindings -
 # bindsym Mod1+f fullscreen toggle
-# bindsym Mod1+q kill
-bindsym Mod1+Shift+q kill
+bindsym Mod1+q kill
+# bindsym Mod1+Shift+q kill
 bindsym Mod1+Shift+$left move left
 bindsym Mod1+Shift+$down move down
 bindsym Mod1+Shift+$up move up
@@ -118,10 +117,9 @@ mode $sysmenu {
 }
 
 
-# - dont follow mouse -
 focus_follows_mouse no
-
 for_window [window_role="pop-up"] floating enable
+workspace_auto_back_and_forth yes
 
 # - auto start - 
 exec --no-startup-id feh --bg-fill ~/5mrzmQl.png
