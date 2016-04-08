@@ -122,7 +122,6 @@ feh
 
 xfce4-power-manager ;; xfce4-power-manager-settings
 #+END_SRC
-
 ** zsh
 oh-my-zsh
 agnoster.zsh-theme
