@@ -28,14 +28,17 @@ values."
      (chinese :variables
               chinese-enable-youdao-dict t)
      emacs-lisp
-     ;; git
+     git
+     github
+     version-control
      markdown
      org
+     python
      (colors :variables
              colors-enable-nyan-cat-progress-bar t)
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
+     (shell :variables
+             shell-default-height 30
+             shell-default-position 'bottom)
      search-engine
      ;; spell-checking
      ;; syntax-checking
@@ -253,7 +256,7 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place you code here."
 
   ;; show menu bar
-  (spacemacs/toggle-menu-bar-on)
+  ;; (spacemacs/toggle-menu-bar-on)
 
   ;; chinese characters
   (spacemacs//set-monospaced-font   "Source Code Pro" "Hiragino Sans GB" 14 16)
@@ -267,12 +270,16 @@ you should place you code here."
   ;; Key Map
   ;; t: evil-find-char-to
   ;; T: evil-find-char-to-backward
-  (global-set-key [f12] 'org-html-export-to-html)
   (spacemacs/set-leader-keys "oy" 'youdao-dictionary-search-at-point+)
+
   (add-hook 'org-mode-hook
             (define-key evil-normal-state-map (kbd "t") 'evil-find-char-to)
             (define-key evil-normal-state-map (kbd "T") 'evil-find-char-to-backward)
-  )
+            (define-key evil-normal-state-map [f12] 'org-html-export-to-html)
+            )
+
+  ;; (global-set-key [f12] 'org-html-export-to-html)
+
   (global-set-key (kbd "C-h C-f") 'find-function)
   (global-set-key (kbd "C-h C-v") 'find-variable)
 
@@ -299,6 +306,7 @@ you should place you code here."
   (with-eval-after-load 'org (org-babel-do-load-languages 'org-babel-load-languages '((python . t) (emacs-lisp . t))))
 
   ;; org-mode
+  ;;(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
   (setq org-export-coding-system 'utf-8)
   (setq org-bullets-bullet-list '("◉" "►" "●" "○" "•"))
   (setq org-agenda-files (quote ("~/org-notes/gtd.org" "~/org-notes/daily.org")))
@@ -368,7 +376,7 @@ you should place you code here."
       "* TODO [#C] %? %i" :empty-lines 1))) t)
  '(package-selected-packages
    (quote
-    (monokai-theme mmm-mode markdown-toc gh-md markdown-mode pdf-tools youdao-dictionary names chinese-word-at-point engine-mode pangu-spacing find-by-pinyin-dired chinese-pyim ace-pinyin ace-jump-mode rainbow-mode rainbow-identifiers toc-org org-repo-todo org-present org-pomodoro alert log4e gntp org-plus-contrib org-bullets htmlize helm-company helm-c-yasnippet gnuplot company-statistics company-quickhelp pos-tip company auto-yasnippet yasnippet ac-ispell auto-complete ws-butler window-numbering volatile-highlights vi-tilde-fringe spaceline s powerline smooth-scrolling restart-emacs rainbow-delimiters popwin persp-mode pcre2el paradox hydra spinner page-break-lines open-junk-file neotree move-text macrostep lorem-ipsum linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-jumper evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-args evil-anzu anzu eval-sexp-fu highlight elisp-slime-nav define-word clean-aindent-mode buffer-move bracketed-paste auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async quelpa package-build use-package which-key bind-key bind-map evil spacemacs-theme))))
+    (smeargle orgit magit-gitflow helm-gitignore request gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger evil-magit pyvenv pytest pyenv-mode pip-requirements magit-gh-pulls hy-mode helm-pydoc github-clone magit magit-popup github-browse-file git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-commit with-editor git-gutter gist gh logito pcache diff-hl cython-mode company-anaconda anaconda-mode pythonic f xterm-color shell-pop multi-term eshell-prompt-extras esh-help monokai-theme mmm-mode markdown-toc gh-md markdown-mode pdf-tools youdao-dictionary names chinese-word-at-point engine-mode pangu-spacing find-by-pinyin-dired chinese-pyim ace-pinyin ace-jump-mode rainbow-mode rainbow-identifiers toc-org org-repo-todo org-present org-pomodoro alert log4e gntp org-plus-contrib org-bullets htmlize helm-company helm-c-yasnippet gnuplot company-statistics company-quickhelp pos-tip company auto-yasnippet yasnippet ac-ispell auto-complete ws-butler window-numbering volatile-highlights vi-tilde-fringe spaceline s powerline smooth-scrolling restart-emacs rainbow-delimiters popwin persp-mode pcre2el paradox hydra spinner page-break-lines open-junk-file neotree move-text macrostep lorem-ipsum linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-jumper evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-args evil-anzu anzu eval-sexp-fu highlight elisp-slime-nav define-word clean-aindent-mode buffer-move bracketed-paste auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async quelpa package-build use-package which-key bind-key bind-map evil spacemacs-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
