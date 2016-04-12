@@ -90,3 +90,15 @@ alias i3rc="vim ~/.config/i3/config"
 alias xrc="vim ~/.Xresources"
 alias xup="xrdb -load ~/.Xresources"
 alias conkyrc="vim ~/.config/conky/.conkyrc"
+alias tmuxrc="vim ~/.tmux.conf"
+alias tmuxup="tmux source-file ~/.tmux.conf"
+alias pbcopy='xsel --clipboard --input'
+alias pbpaste='xsel --clipboard --output'
+
+#git
+alias gs="git status"
+alias gd="git diff"
+alias ga="git add -A"
+alias gc="git commit -m"
+alias gp="git push"
+alias gl="git pull"

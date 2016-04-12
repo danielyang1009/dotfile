@@ -1,13 +1,14 @@
 !------------------------------------------
 ! General
 
-*term: rxvt-unicode-256color
+*term: rxvt--256color
 
 !------------------------------------------
 ! URxvt
 
 ! - basic -
-URxvt*termName: rxvt-unicode-256color
+URxvt*termName: rxvt-256color
+
 URxvt*scrollBar: false
 URxvt*saveLines: 15000
 URxvt*urlLauncher: luakit
