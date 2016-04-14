@@ -10,6 +10,7 @@
 - Run 'diskpart'
 - list disk
 - select disk
+- clean
 
 * Github
 ** Setup Git
