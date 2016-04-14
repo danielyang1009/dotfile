@@ -3,8 +3,8 @@
 
 * Mac
 ** Show hidden file
- defaults write com.apple.finder AppleShowAllFiles YES
-killall Finder
+- defaults write com.apple.finder AppleShowAllFiles YES
+- killall Finder
 
 * Github
 ** Setup Git
