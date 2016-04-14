@@ -6,6 +6,11 @@
 - defaults write com.apple.finder AppleShowAllFiles YES
 - killall Finder
 
+* diskpart
+- Run 'diskpart'
+- list disk
+- select disk
+
 * Github
 ** Setup Git
 Add to System Variables to PATH
