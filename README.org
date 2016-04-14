@@ -1,6 +1,10 @@
 #+TITLE: Dotfiles
 #+STARPUP: showall
 
+* Mac
+** Show hidden file
+ defaults write com.apple.finder AppleShowAllFiles YES.
+
 * Github
 ** Setup Git
 Add to System Variables to PATH
