@@ -5,11 +5,10 @@
 set encoding=utf-8
 filetype off
 filetype indent on
-filetype plugin indent on
 syntax on
 set autoindent
 set foldmethod=indent  "folding based on indentation
-let python_highlight_all=1
+" let python_highlight_all=1
 
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
@@ -61,15 +60,6 @@ au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 " Python: 79 
 " C: 79
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h set textwidth=79
-
-" Turn off settings in 'formatoptions' relating to comment formatting.
-" - c : do not automatically insert the comment leader when wrapping based on
-"    'textwidth'
-" - o : do not insert the comment leader when using 'o' or 'O' from command mode
-" - r : do not insert the comment leader when hitting <Enter> in insert mode
-" Python: not needed
-" C: prevents insertion of '*' at the beginning of every line in a comment
-au BufRead,BufNewFile *.c,*.h set formatoptions-=c formatoptions-=o formatoptions-=r
 
 " Use UNIX (\n) line endings.
 " Only used for new files so as to not force existing files to change their
