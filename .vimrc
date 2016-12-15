@@ -1,7 +1,7 @@
 " VIM CONFIGURATION
 " DANIEL YANG
 
-" Vundle
+" VUNDLE
 " set nocompatible
 filetype off
 
@@ -22,29 +22,50 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'valloric/youcompleteme'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'klen/python-mode'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
 filetype plugin indent on
 
 " etc
-let python_highlight_all=1
 syntax enable
 colorscheme solarized
 set background=dark
-filetype plugin on
 set encoding=utf-8
+filetype plugin on
 set autoindent
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#syntastic#enabled = 0
-let g:airline#extensions#whitespace#enabled = 0
-let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
+set cursorline
+set showmatch
+let python_highlight_all=1
 
-" airline theme
+""" ETC
+" split opening
+set splitbelow
+set splitright
+
+" tab control
+set expandtab
+set smarttab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set shiftround
+set completeopt+=longest,menuone
+
+" trailing white space
+match ErrorMsg '\s\+$'
+
+""" PLUGINS
+" vim-airline
 set laststatus=2
 set background=dark
 let g:airline_power_fonts=1
 let g:airline_theme='solarized'
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#syntastic#enabled = 0
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
@@ -58,14 +79,14 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
-"let g:airline_section_b = '%{getcwd()}'
-"let g:airline_section_c = '%t'
-
-" Binding leader key
-let mapleader="\<space>"
-
-" Remap <Esc>
-inoremap jk <esc>
+" python-mode
+let g:pymode_indent = 1
+let g:pymode_folding = 1
+let g:pymode_motion = 1
+let g:pymode_trim_whitespaces = 1
+let g:pymode_options_max_line_length = 79
+let g:pymode_options_colorcolumn = 1
+let g:pymode_doc_bind = 'K'
 
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
@@ -73,39 +94,34 @@ let NERDTreeShowHidden=1
 let NERDTreeDirArrowExpandable = '▷'
 let NERDTreeDirArrowCollapsible = '▼'
 
-" Keybinds - fast move line up & down
+""" KEYBINDS
+" fast move line up & down
 no <down> ddp
 no <left> <Nop>
 no <right> <Nop>
 no <up> ddkP
 
-" trailing white space
-match ErrorMsg '\s\+$'
+" swich pane
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-H> <C-W><C-H>
+nnoremap <C-L> <C-W><C-L>
 
-" Tab control
-set noexpandtab
-set smarttab
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set shiftround
-set completeopt+=longest
-
-" code folding
-set foldmethod=syntax
-set foldnestmax=10
-set nofoldenable
-set foldlevel=1
-
+""" BASIC MODIFICATION
 " Line number
 set number
-set nowrap  "don't automatically wrap on load
 
 " Enable mouse
 set mouse=a
 
 " No swap file
 set noswapfile
+
+" Binding leader key
+let mapleader="\<space>"
+
+" Remap <Esc>
+inoremap jk <esc>
 
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
