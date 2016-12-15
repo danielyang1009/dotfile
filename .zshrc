@@ -89,4 +89,4 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 alias enw="emacs -nw"
-alias dotsync="python ~/dotfiles/syncfiles.py"
+alias syncdots="python ~/dotfiles/syncfiles.py"
