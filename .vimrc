@@ -1,26 +1,55 @@
 " Vim configuration by Daniel Yang
 " Version 1.0
 
-" Syntax
-set encoding=utf-8
-filetype off
-filetype indent on
-syntax on
-set autoindent
-set foldmethod=indent  "folding based on indentation
-" let python_highlight_all=1
+" Vundle
+" set nocompatible              " be iMproved, required
+filetype off                  " required
 
-" Automatic reloading of .vimrc
-autocmd! bufwritepost .vimrc source %
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/syntastic'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-surround'
+" Plugin 'valloric/youcompleteme'
+Plugin 'klen/python-mode'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+" etc
+syntax on
+filetype plugin on
+set encoding=utf-8
+set t_Co=256
+set autoindent
+
+" airline theme
+set background=dark
+let g:airline_power_fonts=1
+let g:airline_theme='solarized'
+
+" Binding leader key
+let mapleader="\<space>"
+
+" NERDTree
+map <C-n> :NERDTreeToggle<CR>
 
 " Keybinds - fast move line up & down
 no <down> ddp
 no <left> <Nop>
 no <right> <Nop>
 no <up> ddkP
-
-" Binding leader key
-" let mapleader=","
 
 " Line number 
 set number
@@ -32,38 +61,5 @@ set mouse=a
 " No swap file
 set noswapfile
 
-"=====================================================================
-"vimrc file for following the coding standards specified in PEP 7 & 8.
-"====================================================================
-
-" Number of spaces that a pre-existing tab is equal to.
-" For the amount of space used for a new tab use shiftwidth.
-au BufRead,BufNewFile *py,*pyw,*.c,*.h set tabstop=8
-
-" What to use for an indent.
-" This will affect Ctrl-T and 'autoindent'.
-" Python: 4 spaces
-" C: tabs (pre-existing files) or 4 spaces (new files)
-au BufRead,BufNewFile *.py,*.pyw set expandtab  "convert tabs to white space
-au BufRead,BufNewFile *.py,*.pyw set softtabstop=4  "makes the Tab key indent by four sapces
-au BufRead,BufNewFile *.py,*.pyw set shiftwidth=4  "sets width for autoindents
-
-" Use the below highlight group when displaying bad whitespace is desired.
-highlight BadWhitespace ctermbg=red guibg=red
-
-" Display tabs at the beginning of a line in Python mode as bad.
-au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
-" Make trailing whitespace be flagged as bad.
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
-
-" Wrap text after a certain number of characters
-" Python: 79 
-" C: 79
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h set textwidth=79
-
-" Use UNIX (\n) line endings.
-" Only used for new files so as to not force existing files to change their
-" line endings.
-" Python: yes
-" C: yes
-au BufNewFile *.py,*.pyw,*.c,*.h set fileformat=unix
+" Automatic reloading of .vimrc
+autocmd! bufwritepost .vimrc source %
