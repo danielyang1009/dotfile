@@ -25,6 +25,7 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 " etc
+let python_highlight_all=1
 syntax on
 filetype plugin on
 set encoding=utf-8

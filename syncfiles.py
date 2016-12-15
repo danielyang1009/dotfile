@@ -1,5 +1,4 @@
 from shutil import copyfile
-# import os
 
 syncfiles = [
         '.tmux.conf',
