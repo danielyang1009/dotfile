@@ -115,6 +115,8 @@ set number
 set mouse=a
 
 " No swap file
+set nobackup
+set nowb
 set noswapfile
 
 " Binding leader key

@@ -1,5 +1,6 @@
 from shutil import copyfile
 
+
 syncfiles = [
         '.tmux.conf',
         '.vimrc',
