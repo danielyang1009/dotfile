@@ -39,6 +39,11 @@ set cursorline
 set showmatch
 let python_highlight_all=1
 
+" eliminate <esc> dealy
+" timeoutlen => mapping delays
+" ttimeoutlen => key code delays
+set timeoutlen=1000 ttimeoutlen=0
+
 """ ETC
 " split opening
 set splitbelow
