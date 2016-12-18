@@ -23,6 +23,8 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'valloric/youcompleteme'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'klen/python-mode'
+Plugin 'raimondi/delimitmate'
+Plugin 'terryma/vim-multiple-cursors'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
