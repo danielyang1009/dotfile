@@ -2,7 +2,7 @@
 " DANIEL YANG
 
 " VUNDLE
-" set nocompatible
+set nocompatible
 filetype off
 
 " set the runtime path to include Vundle and initialize
@@ -24,22 +24,21 @@ Plugin 'valloric/youcompleteme'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'klen/python-mode'
 Plugin 'raimondi/delimitmate'
-Plugin 'terryma/vim-multiple-cursors'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
 filetype plugin indent on
 
-" etc
+" BASIC
 syntax enable
+filetype plugin on
+set encoding=utf-8
 colorscheme solarized
 set background=dark
-set encoding=utf-8
-filetype plugin on
-set autoindent
 set cursorline
 set showmatch
 let python_highlight_all=1
+"set autoindent
 
 " eliminate <esc> dealy
 " timeoutlen => mapping delays
@@ -96,7 +95,7 @@ let g:pymode_options_colorcolumn = 1
 let g:pymode_doc_bind = 'K'
 
 " NERDTree
-map <C-n> :NERDTreeToggle<CR>
+map <f2> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 let NERDTreeDirArrowExpandable = '▷'
 let NERDTreeDirArrowCollapsible = '▼'
@@ -130,7 +129,7 @@ set noswapfile
 let mapleader="\<space>"
 
 " Remap <Esc>
-inoremap jk <esc>
+"inoremap jk <esc>
 
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %

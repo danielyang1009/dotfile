@@ -88,4 +88,7 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
 alias enw="emacs -nw"
+alias vimrc="vim ~/.vimrc"
+alias zshrc="vim ~/.zshrc"
+alias zshrl=". ~/.zshrc && echo 'ZSH config reloaded'"
 alias syncdots="python ~/dotfiles/syncfiles.py"
