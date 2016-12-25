@@ -63,6 +63,9 @@ set completeopt+=longest,menuone
 match ErrorMsg '\s\+$'
 
 """ PLUGINS
+" ale
+let &runtimepath.=',~/.vim/bundle/ale'
+
 " vim-airline
 set laststatus=2
 set background=dark
