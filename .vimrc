@@ -24,6 +24,11 @@ Plugin 'valloric/youcompleteme'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'klen/python-mode'
 Plugin 'raimondi/delimitmate'
+Plugin 'mattn/emmet-vim'
+Plugin 'ap/vim-css-color'
+Plugin 'w0rp/ale'
+Plugin 'othree/html5.vim'
+Plugin 'gregsexton/matchtag'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -63,6 +68,9 @@ set completeopt+=longest,menuone
 match ErrorMsg '\s\+$'
 
 """ PLUGINS
+" emmet
+imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+
 " ale
 let &runtimepath.=',~/.vim/bundle/ale'
 
