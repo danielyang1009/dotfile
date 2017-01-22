@@ -11,24 +11,15 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
+Plugin 'w0rp/ale'
+Plugin 'python-mode/python-mode'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'kien/ctrlp.vim'
-Plugin 'easymotion/vim-easymotion'
 Plugin 'valloric/youcompleteme'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'klen/python-mode'
-Plugin 'raimondi/delimitmate'
-Plugin 'mattn/emmet-vim'
-Plugin 'ap/vim-css-color'
-Plugin 'w0rp/ale'
-Plugin 'othree/html5.vim'
-Plugin 'gregsexton/matchtag'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -37,42 +28,42 @@ filetype plugin indent on
 " BASIC
 syntax enable
 filetype plugin on
-set encoding=utf-8
 colorscheme solarized
-set background=dark
+"set background=dark
 set cursorline
-set showmatch
-let python_highlight_all=1
-"set autoindent
+set number
+set expandtab
+set tabstop=8
+set shiftwidth=4
+set softtabstop=4
+set autoindent
+set completeopt+=longest,menuone
 
 " eliminate <esc> dealy
 " timeoutlen => mapping delays
 " ttimeoutlen => key code delays
 set timeoutlen=1000 ttimeoutlen=0
 
-""" ETC
 " split opening
 set splitbelow
 set splitright
 
-" tab control
-set expandtab
-set smarttab
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set shiftround
-set completeopt+=longest,menuone
-
-" trailing white space
-match ErrorMsg '\s\+$'
-
 """ PLUGINS
-" emmet
-imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+" vim markdown
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_new_list_item_indent = 2
+
+" yapf
+" python leadr = auto format or set to <LocalLeader>
+autocmd FileType python nnoremap <Leader>= :0,$!yapf<CR>
 
 " ale
-let &runtimepath.=',~/.vim/bundle/ale'
+" let &runtimepath.=',~/.vim/bundle/ale'
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " vim-airline
 set laststatus=2
@@ -125,8 +116,6 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <C-L> <C-W><C-L>
 
 """ BASIC MODIFICATION
-" Line number
-set number
 
 " Enable mouse
 set mouse=a
