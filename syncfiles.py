@@ -9,4 +9,4 @@ syncfiles = [
         ]
 
 for i in syncfiles:
-    copyfile('/home/daniel/'+i, '/home/daniel/dotfiles/'+i)
+    copyfile('/home/dyang/'+i, '/home/dyang/dotfiles/'+i)
