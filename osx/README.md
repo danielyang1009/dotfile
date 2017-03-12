@@ -5,6 +5,7 @@
 - Alfred
 - Magnet
 - Itsycal
+- iTerm2
 - Context
 - Chrome
 - Spacemacs
@@ -32,6 +33,11 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ### Git
 ```bash
 pbcopy < ~/.ssh/id_rsa.pub
+```
+
+### Xcode
+```bash
+xcode-select --install
 ```
 
 ### Magnet
