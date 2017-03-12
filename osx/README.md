@@ -40,16 +40,22 @@ pbcopy < ~/.ssh/id_rsa.pub
 xcode-select --install
 ```
 
+## Keybinds
 ### Magnet
 - `Control + Command + H`: Left half
 - `Control + Command + L`: Right half
 - `Control + Command + K`: Up half
 - `Control + Command + J`: Down half
 - `Control + Command + M`: Maximize
-- `Command + M`: Minimize (Apple Setting) 
+- `Command + M`: Minimize (Apple default) 
 - `Control + Command + →`: Move to next display
 - `Control + Command + ←`: Move to previous display
 
+### Input Source
+- `Command + Space`
+
+### Alfred
+- `Ctrol + Space`
 
 ## Tips
 ### Menu bar
