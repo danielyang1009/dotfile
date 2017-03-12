@@ -13,7 +13,7 @@
 - Spotify
 - OneNote
 
-### Brew
+### HomeBrew
 ```bash
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew install wget curl git tmux zsh
@@ -29,7 +29,12 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
 
-### Magnet Setting
+### Git
+```bash
+pbcopy < ~/.ssh/id_rsa.pub
+```
+
+### Magnet
 - `Control + Command + H`: Left half
 - `Control + Command + L`: Right half
 - `Control + Command + K`: Up half
@@ -38,11 +43,6 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 - `Command + M`: Minimize (Apple Setting) 
 - `Control + Command + →`: Move to next display
 - `Control + Command + ←`: Move to previous display
-
-### Setting git
-```bash
-pbcopy < ~/.ssh/id_rsa.pub
-```
 
 
 ## Tips
