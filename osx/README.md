@@ -31,6 +31,15 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
 
+### VS Code
+#### Plugin
+- 1337 Theme
+- Material Icon Theme
+- Table Formatter
+- Vim
+- Markdown TOC
+- Auto-Open Markdown Preview
+
 ### Git
 ```bash
 pbcopy < ~/.ssh/id_rsa.pub
