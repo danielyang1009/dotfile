@@ -11,6 +11,7 @@
 - Spacemacs
 - Vim
 - VS Studio
+- Dash
 - Spotify
 - OneNote
 
