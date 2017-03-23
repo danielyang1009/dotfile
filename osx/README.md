@@ -70,3 +70,6 @@ xcode-select --install
 ## Tips
 ### Menu bar
 - Holde `command` key to rearrange menu bar
+
+### Force Quit Menu
+- `Command + Option + Esc`
