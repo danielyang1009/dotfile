@@ -1,4 +1,4 @@
-# MAC OS Configuration
+# MAC OSX Configuration
 
 ## Software
 ### List
