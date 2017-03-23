@@ -26,6 +26,10 @@ brew install wget curl git tmux zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ```
 ### Vim
+#### MacVim
+```bash
+brew install macvim -with-override-system-vim
+```
 #### Vundle
 ```bash
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
