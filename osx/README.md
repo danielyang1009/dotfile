@@ -33,10 +33,10 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 ### VS Code
 #### Plugin
+- Vim
 - 1337 Theme
 - Material Icon Theme
 - Table Formatter
-- Vim
 - Markdown TOC
 - Auto-Open Markdown Preview
 
