@@ -41,6 +41,20 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 - Auto-Open Markdown Preview
 
 ### Git
+#### Setup
+```bash
+git config --global user.name "Daniel Yang"
+git config --global user.email "danielyang1009@gmail.com"
+```
+#### Generating a new SSH key
+```bash
+ssh-keygen -t rsa -b 4096 -C "danielyang1009@gmail.com"
+```
+#### Adding your SSH key to the ssh-agent
+```bash
+eval $(ssh-agent -s)
+```
+#### Copy the SSH key to your clipboard
 ```bash
 pbcopy < ~/.ssh/id_rsa.pub
 ```
