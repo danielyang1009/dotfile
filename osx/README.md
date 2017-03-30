@@ -1,5 +1,31 @@
 # MAC OSX Configuration
+<!-- TOC -->
 
+- [MAC OSX Configuration](#mac-osx-configuration)
+    - [Software](#software)
+        - [List](#list)
+        - [HomeBrew](#homebrew)
+        - [Oh-my-zsh](#oh-my-zsh)
+        - [Vim](#vim)
+            - [MacVim](#macvim)
+            - [Vundle](#vundle)
+        - [VS Code](#vs-code)
+            - [Plugin](#plugin)
+        - [Git](#git)
+            - [Setup](#setup)
+            - [Generating a new SSH key](#generating-a-new-ssh-key)
+            - [Adding your SSH key to the ssh-agent](#adding-your-ssh-key-to-the-ssh-agent)
+            - [Copy the SSH key to your clipboard](#copy-the-ssh-key-to-your-clipboard)
+        - [Xcode](#xcode)
+    - [Keybinds](#keybinds)
+        - [Magnet](#magnet)
+        - [Input Source](#input-source)
+        - [Alfred](#alfred)
+    - [Tips](#tips)
+        - [Menu bar](#menu-bar)
+        - [Force Quit Menu](#force-quit-menu)
+
+<!-- /TOC -->
 ## Software
 ### List
 - Alfred
