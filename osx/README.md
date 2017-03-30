@@ -34,6 +34,12 @@ brew install macvim -with-override-system-vim
 ```bash
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
+### Emacs
+```bash
+brew tap d12frosted/emacs-plus
+brew install emacs-plus
+brew linkapps emacs-plus
+```
 
 ### VS Code
 #### Plugin
