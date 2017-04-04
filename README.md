@@ -10,3 +10,6 @@
 - list disk
 - select disk
 - clean
+### Emacs 
+- Add c:\emacs\bin to System variables Path
+- Add c:\Home to System variable, HOME: C:\Home
