@@ -43,6 +43,7 @@
 - Dash
 - Spotify
 - OneNote
+- Skim
 
 ### HomeBrew
 ```bash
