@@ -44,6 +44,7 @@
 - Spotify
 - OneNote
 - Skim
+- HazeOver
 
 ### HomeBrew
 ```bash
