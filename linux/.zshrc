@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # added by Anaconda3 installer
-export PATH="/home/dyang/miniconda3/bin:$PATH"
+export PATH="~/miniconda3/bin:$PATH"
 
 # dircolors
 eval `dircolors ~/.solarized/dircolors.ansi-dark`
