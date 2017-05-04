@@ -109,3 +109,14 @@ sudo apt-get update
 sudo apt-get install paper-gtk-theme
 sudo apt-get install paper-icon-theme
 ```
+
+### Install sogou input
+- Switch to fcitx 
+- Install sogou deb file
+
+
+### Apps
+- Albert
+- VLC
+- Zeal
+- Spotify
