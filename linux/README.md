@@ -120,3 +120,4 @@ sudo apt-get install paper-icon-theme
 - VLC
 - Zeal
 - Spotify
+- Docky
