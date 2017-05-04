@@ -82,13 +82,7 @@ ssh-keygen -t rsa -b 4096 -C "danielyang1009@gmail.com"
 eval $(ssh-agent -s)
 ```
 ### Copy the SSH key to your clipboard
-#### Mac OS
 ```bash
-clip < ~/.ssh/id_rsa.pub
-```
-#### Ubuntu
-```bash
-sudo apt-get install xclip
 xclip -sel clip < ~/.ssh/id_rsa.pub
 ```
 #### Adding SSH key to github
