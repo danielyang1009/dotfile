@@ -94,10 +94,18 @@ cd ~/fonts
 ./install.sh
 ```
 
-### Install anaconda
+### Install anaconda/miniconda
 https://www.continuum.io/downloads
 ```bash
 chmod +x Anaconda3-4.2.0.sh
 ./Anaconda3-4.2.0.sh
 conda update --all
+```
+
+### Install paper icon/theme
+```bash
+sudo add-apt-repository ppa:snwh/pulp
+sudo apt-get update
+sudo apt-get install paper-gtk-theme
+sudo apt-get install paper-icon-theme
 ```
