@@ -131,3 +131,4 @@ sudo apt-get install paper-icon-theme
 - deluge/deluged
 - xmind
 - imwheel
+- sound-switcher/yktoo
