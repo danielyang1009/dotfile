@@ -131,5 +131,8 @@ sudo apt-get install paper-icon-theme
 - deluge/deluged
 - xmind
 - imwheel
+<<<<<<< Updated upstream
 - sound-switcher/yktoo
+=======
+>>>>>>> Stashed changes
 - synaptic package manager
