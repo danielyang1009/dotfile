@@ -121,3 +121,7 @@ sudo apt-get install paper-icon-theme
 - Zeal
 - Spotify
 - Docky
+- Texmaker
+- apvlv
+- gitkraken
+- dropbox
