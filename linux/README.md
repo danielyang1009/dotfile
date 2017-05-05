@@ -8,9 +8,9 @@ sudo apt-get install wget curl git zsh cmake xclip tmux gnome-tweak-tool unity-t
 
 ## Install google-chrome
 ```bash
-wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-sudo apt-get update 
+sudo apt-get update
 sudo apt-get google-chrome-stable
 ```
 
@@ -111,12 +111,12 @@ sudo apt-get install paper-icon-theme
 ```
 
 ### Install sogou input
-- Switch to fcitx 
+- Switch to fcitx
 - Install sogou deb file
 
 
 ### Apps
-- unity-tweak-tool 
+- unity-tweak-tool
 - gnome-tweak-tool
 - albert
 - VLC
@@ -132,3 +132,4 @@ sudo apt-get install paper-icon-theme
 - xmind
 - imwheel
 - sound-switcher/yktoo
+- synaptic package manager
