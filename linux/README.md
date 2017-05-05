@@ -116,12 +116,16 @@ sudo apt-get install paper-icon-theme
 
 
 ### Apps
-- Albert
+- unity-tweak-tool 
+- gnome-tweak-tool
+- albert
 - VLC
-- Zeal
-- Spotify
-- Docky
-- Texmaker
+- zeal
+- spotify
+- docky
+- texmaker
 - apvlv
+- okular
 - gitkraken
 - dropbox
+- deluge
