@@ -128,6 +128,6 @@ sudo apt-get install paper-icon-theme
 - okular
 - gitkraken
 - dropbox
-- deluge
+- deluge/deluged
 - xmind
 - imwheel
