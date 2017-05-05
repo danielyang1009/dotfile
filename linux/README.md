@@ -129,3 +129,4 @@ sudo apt-get install paper-icon-theme
 - gitkraken
 - dropbox
 - deluge
+- xmind
