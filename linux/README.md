@@ -93,6 +93,11 @@ git clone https://github.com/powerline/fonts.git
 cd ~/fonts
 ./install.sh
 ```
+### Install source code pro
+Copy to `/usr/share/fonts/opentype/source-code-pro`
+```bash
+sudo fc-cahse -fv
+```
 
 ### Install anaconda/miniconda
 https://www.continuum.io/downloads
@@ -131,8 +136,5 @@ sudo apt-get install paper-icon-theme
 - deluge/deluged
 - xmind
 - imwheel
-<<<<<<< Updated upstream
 - sound-switcher/yktoo
-=======
->>>>>>> Stashed changes
 - synaptic package manager
