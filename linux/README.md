@@ -130,3 +130,4 @@ sudo apt-get install paper-icon-theme
 - dropbox
 - deluge
 - xmind
+- imwheel
