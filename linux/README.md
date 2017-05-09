@@ -87,12 +87,23 @@ xclip -sel clip < ~/.ssh/id_rsa.pub
 ```
 #### Adding SSH key to github
 
+### Change switcher
+```bash
+sudo apt-get install compizconfig-settings-manager compiz-plugins
+```
+- Open ccsm
+- Search for `ubuntu unity plugin`
+- In switcher tab, disable all keybindings
+- Search for `application switcher`
+- Enable it
+
 ### Patch fonts
 ```bash
 git clone https://github.com/powerline/fonts.git
 cd ~/fonts
 ./install.sh
 ```
+
 ### Install source code pro
 Copy to `/usr/share/fonts/opentype/source-code-pro`
 ```bash
