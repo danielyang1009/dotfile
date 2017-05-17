@@ -4,6 +4,10 @@
 # added by Anaconda3 installer
 export PATH="$HOME/miniconda3/bin:$PATH"
 
+# nvidia
+export PATH=/usr/local/cuda-8.0/bin${PATH:+:${PATH}}
+# export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64\ ${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH
+
 # dircolors
 eval `dircolors ~/.solarized/dircolors.ansi-dark`
 
