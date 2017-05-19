@@ -149,3 +149,5 @@ sudo apt-get install paper-icon-theme
 - imwheel
 - sound-switcher/yktoo
 - synaptic package manager
+- texlive (latex)
+- texstudio (laxtex)
