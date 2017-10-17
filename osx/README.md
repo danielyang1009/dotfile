@@ -13,8 +13,8 @@
 - OneNote
 - Skim
 - HazeOver
-- Steelseries Engine 3
 - Scroll reverser
+- iStat
 
 ### HomeBrew
 ```bash
