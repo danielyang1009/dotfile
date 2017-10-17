@@ -6,14 +6,9 @@
 - Magnet
 - iTerm2
 - Context
-- Chrome
-- Spacemacs
-- Vim
-- Dash
-- OneNote
 - Skim
 - HazeOver
-- Scroll reverser
+- SteerMouse / Scroll reverser
 - iStat
 
 ### HomeBrew
