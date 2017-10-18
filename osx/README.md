@@ -10,6 +10,7 @@
 - HazeOver
 - SteerMouse / Scroll reverser
 - iStat
+- HyperDock
 
 ### HomeBrew
 ```bash
