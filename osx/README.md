@@ -99,3 +99,6 @@ xcode-select --install
 
 ### Force Quit Menu
 - `Command + Option + Esc`
+
+### Show/hide hidden files
+- `Command + Shift + .`
