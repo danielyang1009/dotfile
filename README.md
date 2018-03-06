@@ -1,8 +1,11 @@
 # dotfiles
-## Mac
+## Mac tips
 ### Show hidden file
 - defaults write com.apple.finder AppleShowAllFiles YES
 - killall Finder
+
+### Check out file info of multiple files
+- Command + Option + i (instead of Command + i)
 
 ## Windows 
 ### diskpart
