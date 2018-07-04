@@ -7,6 +7,16 @@
 ### Check out file info of multiple files
 - Command + Option + i (instead of Command + i)
 
+### Add tuna mirror
+`/Library/Application Support/pip/pip.conf` if not exists, create one
+
+Add following to file
+```
+[global]
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+
+```
+
 ## Windows 
 ### diskpart
 - Run 'diskpart'
