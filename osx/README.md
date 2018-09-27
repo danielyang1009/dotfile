@@ -28,6 +28,8 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 chmod +x 
 ```
 
+- add to .zshrc `export PATH="/Users/dyang/miniconda3/bin:$PATH"`
+
 ### Vim
 #### MacVim
 ```bash
