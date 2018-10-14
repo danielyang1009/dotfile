@@ -30,6 +30,13 @@ chmod +x
 
 - add to .zshrc `export PATH="/Users/dyang/miniconda3/bin:$PATH"`
 
+
+### Repeated keyboard input
+```bash
+defaults write -g applepressandholdenabled -bool false
+```
+
+
 ### Vim
 #### MacVim
 ```bash
