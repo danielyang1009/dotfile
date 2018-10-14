@@ -35,7 +35,7 @@ chmod +x
 ```bash
 defaults write -g applepressandholdenabled -bool false
 ```
-
+- Keyboard->Key Repeat('Fast'), Delay Unitl Repeat('Short') (adjusting the speed of repeat)
 
 ### Vim
 #### MacVim
