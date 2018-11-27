@@ -16,6 +16,22 @@ Add following to file
 index-url = https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
+### VScode Vim autoswitch input method
+
+1. Install `im-select`
+```bash
+curl -Ls https://raw.githubusercontent.com/daipeihust/im-select/master/install_mac.sh | sh
+```
+
+2. Add to setting json file 
+```json
+"vim.autoSwitchInputMethod.enable": true,
+"vim.autoSwitchInputMethod.defaultIM": "com.apple.keylayout.US",
+"vim.autoSwitchInputMethod.obtainIMCmd": "/usr/local/bin/im-select",
+"vim.autoSwitchInputMethod.switchIMCmd": "/usr/local/bin/im-select {im}"
+```
+[Ref](https://github.com/VSCodeVim/Vim#input-method)
+
 ## Windows 
 ### diskpart
 - Run 'diskpart'
