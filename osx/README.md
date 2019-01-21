@@ -11,6 +11,14 @@
 - SteerMouse / Scroll reverser
 - iStat
 - HyperDock
+- Handbrake
+- Amphetamine(caffeinate) 
+```bash
+caffeinate -disu
+```
+- IINA(Video)
+- NTFS for Mac
+- Keka(zip)
 
 ### HomeBrew
 ```bash
