@@ -1,4 +1,18 @@
 # dotfiles
+
+## git
+### change privious commit message
+```bash
+# X is number of commit to show
+# change pick to reword :wq to quit
+# edit each commit
+git rebase -i HEAD~X
+# after edit
+git push origin master --force
+```
+
+
+
 ## Mac tips
 ### Show hidden file
 - defaults write com.apple.finder AppleShowAllFiles YES
