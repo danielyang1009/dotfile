@@ -11,9 +11,12 @@ git rebase -i HEAD~X
 git push origin master --force
 ```
 
-
-
 ## Mac tips
+
+### Swipe title bar with two finger
+- Swipe right/left: move to next workspace
+- Swipe up/down: maximize window/restore from maximized window
+
 ### Show hidden file
 - defaults write com.apple.finder AppleShowAllFiles YES
 - killall Finder
