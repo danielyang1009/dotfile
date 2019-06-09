@@ -1,7 +1,6 @@
 # MAC OSX Configuration
 
 ## Software
-### List
 - Alfred
 - Magnet
 - iTerm2
@@ -13,12 +12,20 @@
 - HyperDock
 - Handbrake
 - Amphetamine(caffeinate) 
+
 ```bash
 caffeinate -disu
 ```
+
 - IINA(Video)
 - NTFS for Mac
 - Keka(zip)
+- Hyper
+- fish shell
+
+```bash
+fish_config
+```
 
 ### HomeBrew
 ```bash
