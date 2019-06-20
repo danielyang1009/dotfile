@@ -32,6 +32,10 @@ fish_config
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew install wget curl git tmux zsh
 ```
+- without auto update (in fish)
+```bash
+env HOMEBREW_NO_AUTO_UPDATE=1 brew install
+```
 
 ### Oh-my-zsh
 ```bash
