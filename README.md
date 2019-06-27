@@ -1,5 +1,4 @@
 # dotfiles
-<<<<<<< HEAD
 ## Mac
 
 ### fish shell
@@ -13,8 +12,6 @@ hyper install hyper-dracula
 # set path, set -e to erase?
 set -U fish_user_paths SOME_PATH $fish_user_paths
 ```
-
-=======
 
 ## git
 ### change privious commit message
@@ -33,7 +30,6 @@ git push origin master --force
 - Swipe right/left: move to next workspace
 - Swipe up/down: maximize window/restore from maximized window
 
->>>>>>> 7a5320c3c1171ab36f3e1abdd678494594e75a97
 ### Show hidden file
 - defaults write com.apple.finder AppleShowAllFiles YES
 - killall Finder
@@ -44,7 +40,7 @@ git push origin master --force
 ### conda env with fish shell
 ```bash
 # get conda location <CONDA_ROOT>
-conda info --root 
+conda info --root
 # add line to ~/.config/fish/config.fish
 # source <CONDA_ROOT>/etc/fish/conf.d/conda.fish
 ```
