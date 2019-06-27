@@ -1,7 +1,6 @@
 # MAC OSX Configuration
 
 ## Software
-### List
 - Alfred
 - Magnet
 - iTerm2
@@ -13,17 +12,29 @@
 - HyperDock
 - Handbrake
 - Amphetamine(caffeinate) 
+
 ```bash
 caffeinate -disu
 ```
+
 - IINA(Video)
 - NTFS for Mac
 - Keka(zip)
+- Hyper
+- fish shell
+
+```bash
+fish_config
+```
 
 ### HomeBrew
 ```bash
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew install wget curl git tmux zsh
+```
+- without auto update (in fish)
+```bash
+env HOMEBREW_NO_AUTO_UPDATE=1 brew install
 ```
 
 ### Oh-my-zsh
