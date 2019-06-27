@@ -1,5 +1,18 @@
 # dotfiles
-## Mac tips
+## Mac
+
+### fish shell
+```bash
+# install
+brew install fish
+# edit fish config
+fish_config
+# install hyper-dracula theme
+hyper install hyper-dracula
+# set path, set -e to erase?
+set -U fish_user_paths SOME_PATH $fish_user_paths
+```
+
 ### Show hidden file
 - defaults write com.apple.finder AppleShowAllFiles YES
 - killall Finder
@@ -23,7 +36,7 @@ index-url = https://pypi.tuna.tsinghua.edu.cn/simple
 curl -Ls https://raw.githubusercontent.com/daipeihust/im-select/master/install_mac.sh | sh
 ```
 
-2. Add to setting json file 
+2. Add to setting json file
 ```json
 "vim.autoSwitchInputMethod.enable": true,
 "vim.autoSwitchInputMethod.defaultIM": "com.apple.keylayout.US",
@@ -32,12 +45,12 @@ curl -Ls https://raw.githubusercontent.com/daipeihust/im-select/master/install_m
 ```
 [Ref](https://github.com/VSCodeVim/Vim#input-method)
 
-## Windows 
+## Windows
 ### diskpart
 - Run 'diskpart'
 - list disk
 - select disk
 - clean
-### Emacs 
+### Emacs
 - Add c:\emacs\bin to System variables Path
 - Add c:\Home to System variable, HOME: C:\Home
