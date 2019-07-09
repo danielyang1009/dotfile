@@ -27,6 +27,11 @@ caffeinate -disu
 fish_config
 ```
 
+- inkscape
+```base
+brew install xquartz inkscape
+```
+
 ### HomeBrew
 ```bash
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
