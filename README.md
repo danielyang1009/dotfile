@@ -60,12 +60,20 @@ index-url = https://pypi.tuna.tsinghua.edu.cn/simple
 curl -Ls https://raw.githubusercontent.com/daipeihust/im-select/master/install_mac.sh | sh
 ```
 
-2. Add to setting json file
+2a. Add to setting json file (mac)
 ```json
 "vim.autoSwitchInputMethod.enable": true,
 "vim.autoSwitchInputMethod.defaultIM": "com.apple.keylayout.US",
 "vim.autoSwitchInputMethod.obtainIMCmd": "/usr/local/bin/im-select",
 "vim.autoSwitchInputMethod.switchIMCmd": "/usr/local/bin/im-select {im}"
+```
+
+2b. Add to setting json file (windows)
+```json
+"vim.autoSwitchInputMethod.enable": true,
+"vim.autoSwitchInputMethod.defaultIM": "1033",
+"vim.autoSwitchInputMethod.obtainIMCmd": "C:\\im-select\\im-select.exe", 
+"vim.autoSwitchInputMethod.switchIMCmd": "C:\\im-select\\im-select.exe {im}"
 ```
 [Ref](https://github.com/VSCodeVim/Vim#input-method)
 
