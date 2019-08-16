@@ -60,7 +60,7 @@ index-url = https://pypi.tuna.tsinghua.edu.cn/simple
 curl -Ls https://raw.githubusercontent.com/daipeihust/im-select/master/install_mac.sh | sh
 ```
 
-2. Add to setting json file (mac)
+2. Add to setting json file
 - macOS
 
 ```json
