@@ -56,9 +56,11 @@ index-url = https://pypi.tuna.tsinghua.edu.cn/simple
 ### VScode Vim autoswitch input method
 
 1. Install `im-select`
+- macOS
 ```bash
 curl -Ls https://raw.githubusercontent.com/daipeihust/im-select/master/install_mac.sh | sh
 ```
+- win download from [Im-select](https://github.com/daipeihust/im-select)
 
 2. Add to setting json file
 - macOS
