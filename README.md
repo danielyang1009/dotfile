@@ -1,4 +1,5 @@
 # dotfiles
+
 ## Mac
 
 ### fish shell
@@ -13,18 +14,13 @@ hyper install hyper-dracula
 set -U fish_user_paths SOME_PATH $fish_user_paths
 ```
 
-## git
-### change privious commit message
+### conda env with fish shell
 ```bash
-# X is number of commit to show
-# change pick to reword :wq to quit
-# edit each commit
-git rebase -i HEAD~X
-# after edit
-git push origin master --force
+# get conda location <CONDA_ROOT>
+conda info --root
+# add line to ~/.config/fish/config.fish
+# source <CONDA_ROOT>/etc/fish/conf.d/conda.fish
 ```
-
-## Mac tips
 
 ### Swipe title bar with two finger
 - Swipe right/left: move to next workspace
@@ -37,15 +33,21 @@ git push origin master --force
 ### Check out file info of multiple files
 - Command + Option + i (instead of Command + i)
 
-### conda env with fish shell
+
+## git
+### change privious commit message
 ```bash
-# get conda location <CONDA_ROOT>
-conda info --root
-# add line to ~/.config/fish/config.fish
-# source <CONDA_ROOT>/etc/fish/conf.d/conda.fish
+# X is number of commit to show
+# change pick to reword :wq to quit
+# edit each commit
+git rebase -i HEAD~X
+# after edit
+git push origin master --force
 ```
 
-### Add tuna mirror
+
+
+## Add tuna mirror
 `/Library/Application Support/pip/pip.conf` if not exists, create one
 
 Add following to file
@@ -53,7 +55,7 @@ Add following to file
 [global]
 index-url = https://pypi.tuna.tsinghua.edu.cn/simple
 ```
-### VScode Vim autoswitch input method
+## VScode Vim autoswitch input method
 
 1. Install `im-select`
 - macOS
@@ -82,11 +84,43 @@ curl -Ls https://raw.githubusercontent.com/daipeihust/im-select/master/install_m
 [Ref](https://github.com/VSCodeVim/Vim#input-method)
 
 ## Windows
+
+### Shortcuts
+
+- `Win + D`: show desktop
+- `Win + E`: windows explorer
+- `Win + I`: settings
+- `Win + V`: clipboard history
+- `Win + R`: run
+- `Win + Q/S`: cortana search
+- `Win + number`: run taskbar program
+- `Win + Shift + S`: take screenshot
+
+#### Tips
+
+- Drap and shake one window to minimize all other windows
+
+### Matlab
+- Cheat Matlab to use UTF-8 instead of GBK
+- bin folder `lcdata.xml` file
+
+```xml
+</lcdata>
+    <codeset>
+        <encoding name="UTF-8">  
+            <encoding_alias name="utf8"/>  
+            <encoding_alias name="GBK"/>  
+        </encoding>
+    </codeset>
+</lcdata>
+```
+
 ### diskpart
 - Run 'diskpart'
 - list disk
 - select disk
 - clean
+
 ### Emacs
 - Add c:\emacs\bin to System variables Path
 - Add c:\Home to System variable, HOME: C:\Home
