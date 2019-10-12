@@ -33,8 +33,13 @@ conda info --root
 - Swipe right/left: move to next workspace
 - Swipe up/down: maximize window/restore from maximized window
 
+## Keyboard shortcut
+
+### Go to directory in Finder
+- `Command + Shift + g`
+
 ### Show hidden file
- - `Command + Shift + dot`
+- `Command + Shift + dot`
 
 ### Check out file info of multiple files
 - `Command + Option + i (instead of Command + i)`
