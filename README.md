@@ -75,7 +75,8 @@ curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install >> 
 - edit `brew_install`
 ```
 # BREW_REPO = "https://github.com/Homebrew/brew".freeze
-BREW_REPO = "git://mirrors.ustc.edu.cn/brew.git".freeze
+BREW_REPO = "https://mirrors.ustc.edu.cn/brew.git".freeze
+CORE_TAP_REPO = "https://mirrors.ustc.edu.cn/homebrew-core.git".freeze
 ```
 
 - install `homebrew`
