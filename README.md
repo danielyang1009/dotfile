@@ -5,6 +5,9 @@
 ## keyboard
 - `defaults write -g ApplePressAndHoldEnabled -bool false`
 - restart
+- System Preference > Keyboard
+- 'Key Repeat' middle setting
+- 'Delay Until Repeat' Short
 
 ### fish shell
 ```bash
