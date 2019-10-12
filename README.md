@@ -97,6 +97,12 @@ cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
 git remote set-url origin git://mirrors.ustc.edu.cn/homebrew-core.git
 ```
 
+- Bottles source for zsh
+```
+echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles' >> ~/.zshrc
+source ~/.zshrc
+```
+
 - install brew cask `brew install cask`
 ```
 默认不安装cask 有需要的可以替换
