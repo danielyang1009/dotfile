@@ -67,6 +67,9 @@ index-url = https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 ## Homebrew
 
+- [ustc](http://mirrors.ustc.edu.cn/)
+- [tuna](https://mirrors.tuna.tsinghua.edu.cn/)
+
 - get `brew_install`
 ```
 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install >> brew_install
@@ -84,14 +87,18 @@ CORE_TAP_REPO = "https://mirrors.ustc.edu.cn/homebrew-core.git".freeze
 ruby ./brew_install
 ```
 
-- replace source 
-- [ustc](http://mirrors.ustc.edu.cn/)
-- [tuna](https://mirrors.tuna.tsinghua.edu.cn/)
+- stuck at clong
 ```
+git clone git://mirrors.ustc.edu.cn/homebrew-core.git/ /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core --depth=1
+
 cd "$(brew --repo)"
 git remote set-url origin git://mirrors.ustc.edu.cn/brew.git
 cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
 git remote set-url origin git://mirrors.ustc.edu.cn/homebrew-core.git
+```
+
+- install brew cask `brew install cask`
+```
 默认不安装cask 有需要的可以替换
 cd "$(brew --repo)/Library/Taps/homebrew/homebrew-cask"
 git remote set-url origin git://mirrors.ustc.edu.cn/homebrew-cask.git
