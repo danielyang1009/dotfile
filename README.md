@@ -2,6 +2,10 @@
 
 ## Mac
 
+## keyboard
+- `defaults write -g ApplePressAndHoldEnabled -bool false`
+- restart
+
 ### fish shell
 ```bash
 # install
@@ -35,6 +39,7 @@ conda info --root
 
 
 ## git
+
 ### change privious commit message
 ```bash
 # X is number of commit to show
@@ -45,9 +50,7 @@ git rebase -i HEAD~X
 git push origin master --force
 ```
 
-
-
-## Add tuna mirror
+### Add tuna mirror
 `/Library/Application Support/pip/pip.conf` if not exists, create one
 
 Add following to file
@@ -55,6 +58,40 @@ Add following to file
 [global]
 index-url = https://pypi.tuna.tsinghua.edu.cn/simple
 ```
+## Homebrew
+
+- get `brew_install`
+```
+curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install >> brew_install
+```
+
+- edit `brew_install`
+```
+# BREW_REPO = "https://github.com/Homebrew/brew".freeze
+BREW_REPO = "git://mirrors.ustc.edu.cn/brew.git".freeze
+```
+
+- install `homebrew`
+```
+ruby ./brew_install
+```
+
+- replace source 
+- [ustc](http://mirrors.ustc.edu.cn/)
+- [tuna](https://mirrors.tuna.tsinghua.edu.cn/)
+```
+cd "$(brew --repo)"
+git remote set-url origin git://mirrors.ustc.edu.cn/brew.git
+cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
+git remote set-url origin git://mirrors.ustc.edu.cn/homebrew-core.git
+默认不安装cask 有需要的可以替换
+cd "$(brew --repo)/Library/Taps/homebrew/homebrew-cask"
+git remote set-url origin git://mirrors.ustc.edu.cn/homebrew-cask.git
+```
+
+
+
+
 ## VScode Vim autoswitch input method
 
 1. Install `im-select`
