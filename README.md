@@ -34,11 +34,10 @@ conda info --root
 - Swipe up/down: maximize window/restore from maximized window
 
 ### Show hidden file
-- defaults write com.apple.finder AppleShowAllFiles YES
-- killall Finder
+ - `Command + Shift + dot`
 
 ### Check out file info of multiple files
-- Command + Option + i (instead of Command + i)
+- `Command + Option + i (instead of Command + i)`
 
 
 ## git
@@ -91,9 +90,6 @@ git remote set-url origin git://mirrors.ustc.edu.cn/homebrew-core.git
 cd "$(brew --repo)/Library/Taps/homebrew/homebrew-cask"
 git remote set-url origin git://mirrors.ustc.edu.cn/homebrew-cask.git
 ```
-
-
-
 
 ## VScode Vim autoswitch input method
 
