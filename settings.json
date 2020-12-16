@@ -1,0 +1,133 @@
+{
+    "workbench.iconTheme": "simple-icons",
+    // "editor.fontFamily": "\"Cascadia Code\", \"Microsoft YaHei Mono\"",
+    "editor.fontFamily": "\"JetBrains Mono\", \"Microsoft YaHei Mono\"",
+    "editor.autoClosingBrackets": "always",
+    "editor.largeFileOptimizations": false,
+    "editor.fontSize": 16,
+    "editor.lineHeight": 20,
+    "editor.fontLigatures": false,
+    "editor.wordWrap": "on",
+    "vim.useSystemClipboard": true,
+    "vim.surround": true,
+    "vim.easymotion": true,
+    "vim.easymotionKeys": "hklyuiopnm,qwertzxcvbasdgjf;",
+    "vim.leader": "<space>",
+    "vim.autoSwitchInputMethod.enable": true,
+    "vim.autoSwitchInputMethod.defaultIM": "1033",
+    "vim.autoSwitchInputMethod.obtainIMCmd": "C:\\im-select\\im-select.exe",
+    "vim.autoSwitchInputMethod.switchIMCmd": "C:\\im-select\\im-select.exe {im}",
+    "emmet.triggerExpansionOnTab": true,
+    "terminal.integrated.inheritEnv": false,
+    "workbench.colorTheme": "lucy",
+    "todohighlight.isEnable": true,
+    "sync.gist": "2bfde53c795cc95e568066213fc705c3",
+    // Latex Setting
+    "latex-workshop.latex.tools": [{
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-xelatex",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+                "%DOCFILE%"
+            ],
+            "env": {}
+        },
+    ],
+    "latex-workshop.latex.recipe.default": "first",
+    "latex-workshop.latex.recipes": [{
+            "name": "latexmk 🔃",
+            "tools": [
+                "latexmk"
+            ]
+        },
+        {
+            "name": "pdflatex ➞ bibtex ➞ pdflatex × 2",
+            "tools": [
+                "pdflatex",
+                "bibtex",
+                "pdflatex",
+                "pdflatex"
+            ]
+        },
+    ],
+    "latex-workshop.view.pdf.viewer": "external",
+    "latex-workshop.view.pdf.external.viewer.command": "C:\\Program Files\\SumatraPDF\\SumatraPDF.exe",
+    "latex-workshop.view.pdf.external.synctex.command": "C:/Program Files/SumatraPDF/SumatraPDF.exe",
+    "latex-workshop.view.pdf.external.synctex.args": [
+        "-forward-search",
+        "%TEX%",
+        "%LINE%",
+        "-reuse-instance",
+        "-inverse-search",
+        "code \"C:\\Users\\dyang\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\out\\cli.js\" -r -g \"%f:%l\"",
+        "%PDF%",
+    ],
+    // SumatraPDF 
+    // C:\Users\dyang\AppData\Local\Programs\Microsoft VS Code\Code.exe "C:\Users\dyang\AppData\Local\Programs\Microsoft VS Code\resources\app\out\cli.js" -r -g "%f:%l"
+    "latex-workshop.latex.autoClean.run": "onBuilt",//"never","onFaile","onBuilt"
+    "latex-workshop.latex.clean.fileTypes": [
+        "*.aux",
+        "*.bbl",
+        "*.blg",
+        "*.idx",
+        "*.ind",
+        "*.lof",
+        "*.lot",
+        "*.out",
+        "*.toc",
+        "*.acn",
+        "*.acr",
+        "*.alg",
+        "*.glg",
+        "*.glo",
+        "*.gls",
+        "*.ist",
+        "*.fls",
+        "*.log",
+        "*.fdb_latexmk",
+        "*.snm",
+        "*.nav",
+    ],
+    "todo-tree.highlights.defaultHighlight": {
+        "icon": "alert",
+        "type": "text",
+        "foreground": "white",
+        "background": "#fb7da7",
+        // "opacity": 80,
+    },
+    "todo-tree.highlights.customHighlight": {
+        "TODO": {
+            "icon": "check",
+            "type": "line"
+        },
+        "FIXME": {
+            "background": "#e3cf65",
+        }
+    },
+    "python.languageServer": "Pylance",
+    "python.defaultInterpreterPath": "C:\\Users\\dyang\\Anaconda3\\python.exe"
+}
