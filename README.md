@@ -146,6 +146,7 @@ curl -Ls https://raw.githubusercontent.com/daipeihust/im-select/master/install_m
 - `Win + E`: windows explorer
 - `Win + I`: settings
 - `Win + V`: clipboard history
+- `Win + P`: projection
 - `Win + R`: run
 - `Win + Q/S`: cortana search
 - `Win + number`: run taskbar program
