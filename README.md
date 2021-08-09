@@ -232,4 +232,6 @@ FixedPageUI [
 - 在SumatraPDF中双击鼠标
 ```
 InverseSearchCmdLine = "C:\Users\dyang\AppData\Local\Programs\Microsoft VS Code\Code.exe" "C:\Users\dyang\AppData\Local\Programs\Microsoft VS Code\resources\app\out\cli.js" -r -g "%f:%l"
+DefaultDisplayMode = continuous
+DefaultZoom = fit width
 ```
