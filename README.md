@@ -212,3 +212,24 @@ FixedPageUI [
 	HideScrollbars = false
 ]
 ```
+
+正向搜索（从VS code -> SumatraPDF）
+- 快捷键 Ctrl+Alt+J
+```
+"latex-workshop.view.pdf.external.synctex.command": "C:\\Program Files\\SumatraPDF\\SumatraPDF.exe",
+"latex-workshop.view.pdf.external.synctex.args": [
+	"-forward-search",
+	"%TEX%",
+	"%LINE%",
+	"-reuse-instance",
+	"-inverse-search",
+	"code \"C:\\Users\\dyang\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\out\\cli.js\" -r -g \"%f:%l\"",
+	"%PDF%",
+],
+```
+
+反向搜索
+- 在SumatraPDF中双击鼠标
+```
+InverseSearchCmdLine = "C:\Users\dyang\AppData\Local\Programs\Microsoft VS Code\Code.exe" "C:\Users\dyang\AppData\Local\Programs\Microsoft VS Code\resources\app\out\cli.js" -r -g "%f:%l"
+```
