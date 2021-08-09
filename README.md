@@ -200,3 +200,15 @@ In `Files` app, click `Connect to Server`, put in `smb://your_ip_address`.
 ### Emacs
 - Add c:\emacs\bin to System variables Path
 - Add c:\Home to System variable, HOME: C:\Home
+
+### Sumatra PDF
+```
+FixedPageUI [
+	TextColor = #000000
+	BackgroundColor = #B3CCCC
+	SelectionColor = #f5fc0c
+	WindowMargin = 2 4 2 4
+	PageSpacing = 4 4
+	HideScrollbars = false
+]
+```
