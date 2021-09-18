@@ -201,6 +201,16 @@ In `Files` app, click `Connect to Server`, put in `smb://your_ip_address`.
 - Add c:\emacs\bin to System variables Path
 - Add c:\Home to System variable, HOME: C:\Home
 
+### Github
+Using socks5 proxy
+```
+git config --global http.proxy socks5://127.0.0.1:1080
+```
+unset proxy
+```
+git config --global --unset http.proxy
+```
+
 ### Sumatra PDF
 ```
 FixedPageUI [
