@@ -245,3 +245,16 @@ InverseSearchCmdLine = "C:\Users\dyang\AppData\Local\Programs\Microsoft VS Code\
 DefaultDisplayMode = continuous
 DefaultZoom = fit width
 ```
+
+## Data Science
+
+jupyter theme
+
+```
+conda install -c conda-forge jupyterthemes
+```
+
+
+```
+!jt -t onedork -f source -fs 11 -nf sourcesans -nfs 11 -cellw 95% -T
+```
